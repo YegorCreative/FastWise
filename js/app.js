@@ -120,8 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
             pendingGoalHours = parseInt(card.getAttribute('data-hours'), 10);
             
             // Update detail view text
-            detailTitle.textContent = card.querySelector('.plan-title').textContent;
-            detailDesc.textContent = card.querySelector('.plan-desc').textContent;
+            const detailRatio = document.getElementById('detail-plan-ratio');
+            if (detailRatio) detailRatio.textContent = card.querySelector('.plan-title').textContent;
+            detailTitle.textContent = card.querySelector('.plan-desc').textContent;
+            detailDesc.textContent = card.getAttribute('data-long-desc');
             
             // Slide in the view
             planDetailView.classList.add('active');

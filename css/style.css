@@ -418,7 +418,13 @@ body {
 }
 
 .plan-banner h3 {
-    font-size: 20px;
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.plan-banner h4 {
+    font-size: 18px;
+    font-weight: 500;
     margin-bottom: 8px;
 }
 
