@@ -110,6 +110,65 @@
                 <span>Settings</span>
             </button>
         </nav>
+        <!-- Plan Detail View (Hidden by default) -->
+        <div id="plan-detail-view" class="slide-view">
+            <div class="slide-header">
+                <button class="icon-button back-btn" id="close-plan-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <h2>Week Plan</h2>
+                <div style="width: 44px;"></div> <!-- Spacer -->
+            </div>
+            
+            <div class="plan-detail-content">
+                <div class="plan-banner">
+                    <h3 id="detail-plan-title">Skip breakfast</h3>
+                    <p id="detail-plan-desc">A classic method. Also for beginners. You will skip breakfast each day.</p>
+                </div>
+                
+                <div class="chart-section">
+                    <h3>Fasting Periods</h3>
+                    <div class="chart-container">
+                        <div class="y-axis">
+                            <span>0h</span>
+                            <span>6h</span>
+                            <span>12h</span>
+                            <span>18h</span>
+                            <span>24h</span>
+                        </div>
+                        <div class="bars-container">
+                            <div class="day-col"><div class="bar-wrapper"><div class="bar-segment eating" style="height: 83.33%;"></div><div class="bar-segment fasting" style="height: 16.67%;"></div></div><span class="x-label">Tu</span></div>
+                            <div class="day-col"><div class="bar-wrapper"><div class="bar-segment fasting" style="height: 50%;"></div><div class="bar-segment eating" style="height: 33.33%;"></div><div class="bar-segment fasting" style="height: 16.67%;"></div></div><span class="x-label">We</span></div>
+                            <div class="day-col"><div class="bar-wrapper"><div class="bar-segment fasting" style="height: 50%;"></div><div class="bar-segment eating" style="height: 33.33%;"></div><div class="bar-segment fasting" style="height: 16.67%;"></div></div><span class="x-label">Th</span></div>
+                            <div class="day-col"><div class="bar-wrapper"><div class="bar-segment fasting" style="height: 50%;"></div><div class="bar-segment eating" style="height: 33.33%;"></div><div class="bar-segment fasting" style="height: 16.67%;"></div></div><span class="x-label">Fr</span></div>
+                            <div class="day-col"><div class="bar-wrapper"><div class="bar-segment fasting" style="height: 50%;"></div><div class="bar-segment eating" style="height: 33.33%;"></div><div class="bar-segment fasting" style="height: 16.67%;"></div></div><span class="x-label">Sa</span></div>
+                            <div class="day-col"><div class="bar-wrapper"><div class="bar-segment fasting" style="height: 50%;"></div><div class="bar-segment eating" style="height: 33.33%;"></div><div class="bar-segment fasting" style="height: 16.67%;"></div></div><span class="x-label">Su</span></div>
+                            <div class="day-col"><div class="bar-wrapper"><div class="bar-segment fasting" style="height: 50%;"></div><div class="bar-segment eating" style="height: 33.33%;"></div><div class="bar-segment fasting" style="height: 16.67%;"></div></div><span class="x-label">Mo</span></div>
+                            <div class="day-col"><div class="bar-wrapper"><div class="bar-segment fasting" style="height: 50%;"></div><div class="bar-segment eating" style="height: 50%;"></div></div><span class="x-label">Tu</span></div>
+                        </div>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item"><span class="legend-color fasting-color"></span> Fasting</div>
+                        <div class="legend-item"><span class="legend-color eating-color"></span> Eating</div>
+                    </div>
+                </div>
+                
+                <div class="schedule-list">
+                    <div class="schedule-item"><strong>Period 1:</strong> <span>Tue 8:00 PM – Wed 12:00 PM</span></div>
+                    <div class="schedule-item"><strong>Period 2:</strong> <span>Wed 8:00 PM – Thu 12:00 PM</span></div>
+                    <div class="schedule-item"><strong>Period 3:</strong> <span>Thu 8:00 PM – Fri 12:00 PM</span></div>
+                    <div class="schedule-item"><strong>Period 4:</strong> <span>Fri 8:00 PM – Sat 12:00 PM</span></div>
+                    <div class="schedule-item"><strong>Period 5:</strong> <span>Sat 8:00 PM – Sun 12:00 PM</span></div>
+                    <div class="schedule-item"><strong>Period 6:</strong> <span>Sun 8:00 PM – Mon 12:00 PM</span></div>
+                    <div class="schedule-item"><strong>Period 7:</strong> <span>Mon 8:00 PM – Tue 12:00 PM</span></div>
+                </div>
+            </div>
+            
+            <div class="action-footer">
+                <button class="primary-btn teal-btn" id="start-week-btn">Start week</button>
+            </div>
+        </div>
+
     </div>
     <script src="js/app.js"></script>
 </body>

@@ -98,6 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Logic to switch views would go here
         });
     });
+    // Slide view elements
+    const planDetailView = document.getElementById('plan-detail-view');
+    const closePlanBtn = document.getElementById('close-plan-btn');
+    const startWeekBtn = document.getElementById('start-week-btn');
+    const detailTitle = document.getElementById('detail-plan-title');
+    const detailDesc = document.getElementById('detail-plan-desc');
+    let pendingGoalHours = 16;
+
     // Plan Selection interaction
     planCards.forEach(card => {
         card.addEventListener('click', () => {
@@ -108,15 +116,32 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add active class to clicked
             card.classList.add('active-plan');
             
-            // Update goal
-            goalHours = parseInt(card.getAttribute('data-hours'), 10);
-            goalMs = goalHours * 60 * 60 * 1000;
+            // Set pending goal
+            pendingGoalHours = parseInt(card.getAttribute('data-hours'), 10);
             
-            // Update UI
-            goalDisplay.textContent = `Goal: ${goalHours} Hours`;
+            // Update detail view text
+            detailTitle.textContent = card.querySelector('.plan-title').textContent;
+            detailDesc.textContent = card.querySelector('.plan-desc').textContent;
             
-            // If timer is not running, we can reset the display just in case
-            updateDisplay(0);
+            // Slide in the view
+            planDetailView.classList.add('active');
         });
+    });
+
+    closePlanBtn.addEventListener('click', () => {
+        planDetailView.classList.remove('active');
+    });
+
+    startWeekBtn.addEventListener('click', () => {
+        // Apply goal
+        goalHours = pendingGoalHours;
+        goalMs = goalHours * 60 * 60 * 1000;
+        
+        // Update UI
+        goalDisplay.textContent = `Goal: ${goalHours} Hours`;
+        updateDisplay(0);
+        
+        // Close view
+        planDetailView.classList.remove('active');
     });
 });
