@@ -412,7 +412,7 @@ body {
 }
 
 .plan-banner {
-    background: #10b981; /* Teal matching screenshot */
+    background: var(--primary-gradient);
     padding: 20px;
     color: white;
 }
@@ -493,7 +493,7 @@ body {
 }
 
 .bar-segment.fasting {
-    background-color: #10b981; /* Teal */
+    background-color: var(--primary-color);
 }
 
 .bar-segment.eating {
@@ -526,7 +526,7 @@ body {
 }
 
 .legend-color.fasting-color {
-    background-color: #10b981;
+    background-color: var(--primary-color);
 }
 
 .legend-color.eating-color {
@@ -561,11 +561,4 @@ body {
     border-top: 1px solid var(--surface-border);
     display: flex;
     justify-content: center;
-}
-
-.primary-btn.teal-btn {
-    background: #10b981;
-    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
-    width: 100%;
-    max-width: 100%;
 }
