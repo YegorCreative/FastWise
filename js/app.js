@@ -50,44 +50,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function toggleTimer() {
-        if (isFasting) {
-            // Stop Fasting
-            clearInterval(timerInterval);
-            isFasting = false;
-            
-            // Update UI
-            toggleBtn.textContent = 'Start Fasting';
-            toggleBtn.classList.remove('stop');
-            toggleBtn.classList.add('pulse');
-            timeLabel.textContent = 'Ready to start';
-            
-            // Reset for demo purposes (usually you'd save this to history)
-            updateDisplay(0);
-            
-        } else {
-            // Start Fasting
-            isFasting = true;
-            startTime = Date.now();
-            
-            // Update UI
-            toggleBtn.textContent = 'End Fast';
-            toggleBtn.classList.add('stop');
-            toggleBtn.classList.remove('pulse');
-            timeLabel.textContent = 'Elapsed Time';
-            
-            updateDisplay(0); // initial tick
-            
-            timerInterval = setInterval(() => {
-                const now = Date.now();
-                const elapsed = now - startTime;
-                updateDisplay(elapsed);
-            }, 1000);
-        }
+    function startFasting() {
+        if (isFasting) return;
+        isFasting = true;
+        startTime = Date.now();
+        
+        // Update UI
+        toggleBtn.style.display = 'block'; // Show the "End Fasting" button
+        toggleBtn.textContent = 'End Fasting';
+        toggleBtn.classList.add('stop');
+        toggleBtn.classList.remove('pulse');
+        timeLabel.textContent = 'Elapsed Time';
+        
+        updateDisplay(0); // initial tick
+        
+        timerInterval = setInterval(() => {
+            const now = Date.now();
+            const elapsed = now - startTime;
+            updateDisplay(elapsed);
+        }, 1000);
+    }
+
+    function endFasting() {
+        if (!isFasting) return;
+        clearInterval(timerInterval);
+        isFasting = false;
+        
+        // Update UI
+        toggleBtn.style.display = 'none'; // Hide the button
+        timeLabel.textContent = 'Ready to start';
+        
+        updateDisplay(0);
     }
 
     // Event Listeners
-    toggleBtn.addEventListener('click', toggleTimer);
+    toggleBtn.addEventListener('click', endFasting);
     
     // Navigation interaction
     const navItems = document.querySelectorAll('.nav-item');
@@ -270,10 +267,21 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update UI
         goalDisplay.textContent = `Goal: ${goalHours} Hours`;
-        updateDisplay(0);
         
-        // Close view
+        // Close views
         planDetailView.classList.remove('active');
+        if (typeof specialPlansView !== 'undefined' && specialPlansView) {
+            specialPlansView.classList.remove('active');
+        }
+        
+        // Switch to Fasting tab
+        navItems.forEach(i => i.classList.remove('active'));
+        document.querySelector('[data-target="fasting-view"]').classList.add('active');
+        Object.values(views).forEach(v => v.classList.add('hidden-view'));
+        views['fasting-view'].classList.remove('hidden-view');
+
+        // Start the timer!
+        startFasting();
     });
 
     // --- Profile & Water Logic ---
