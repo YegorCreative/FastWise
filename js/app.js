@@ -290,4 +290,28 @@ document.addEventListener('DOMContentLoaded', () => {
             updateWaterUI();
         });
     });
+
+    const shareProgressBtn = document.getElementById('share-progress-btn');
+    if (shareProgressBtn) {
+        shareProgressBtn.addEventListener('click', async () => {
+            const currentBMI = bmiDisplay.textContent;
+            const water = currentWater;
+            
+            const shareData = {
+                title: 'My Fasting Progress',
+                text: `I've been using FastWise! My current BMI is ${currentBMI} and I've drank ${water}ml of water today. Join me!`,
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Error sharing:', err);
+                }
+            } else {
+                // Fallback
+                alert(`Share this info: \n\n${shareData.text}`);
+            }
+        });
+    }
 });
