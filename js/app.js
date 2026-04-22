@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-item');
     const views = {
         'fasting-view': document.getElementById('fasting-view'),
+        'stats-view': document.getElementById('stats-view'),
         'me-view': document.getElementById('me-view')
     };
 
