@@ -128,59 +128,99 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${hour24}:00 AM`;
     }
 
-    function renderPlanDetails(goalHours) {
-        const startHour = 20; // 8 PM
-        const endHour = (startHour + goalHours) % 24;
-        
-        // Render Chart
-        const days = ['Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu'];
+    const CUSTOM_SCHEDULES = {
+        'power-week': {
+            goalHours: 18,
+            days: [
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 },
+                { fast1Pct: 0, eatPct: (10/24)*100, fast2Pct: (14/24)*100 },
+                { fast1Pct: (6/24)*100, eatPct: (14/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { fast1Pct: (6/24)*100, eatPct: (18/24)*100, fast2Pct: 0 }
+            ],
+            periods: [
+                "Tue 8:00 PM – Wed 12:00 PM",
+                "Wed 8:00 PM – Thu 12:00 PM",
+                "Fri 10:00 AM – Sat 6:00 AM",
+                "Sat 8:00 PM – Sun 12:00 PM",
+                "Mon 12:00 AM – Tue 6:00 AM"
+            ]
+        }
+    };
+
+    function renderPlanDetails(planIdOrHours) {
         let chartHTML = '';
+        let scheduleHTML = '';
+        const days = ['Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu'];
         
-        days.forEach((day, index) => {
-            let barHTML = '';
-            if (index === 0) {
-                // First day: Eating 0-start, Fasting start-24
-                const eatPct = (startHour / 24) * 100;
-                const fastPct = ((24 - startHour) / 24) * 100;
-                barHTML = `<div class="bar-segment eating" style="height: ${eatPct}%;"></div><div class="bar-segment fasting" style="height: ${fastPct}%;"></div>`;
-            } else if (index === 7) {
-                // Last day: Fasting 0-end, Eating end-24
-                const fastPct = (endHour / 24) * 100;
-                const eatPct = ((24 - endHour) / 24) * 100;
-                barHTML = `<div class="bar-segment fasting" style="height: ${fastPct}%;"></div><div class="bar-segment eating" style="height: ${eatPct}%;"></div>`;
-            } else {
-                // Middle days: Fasting 0-end, Eating end-start, Fasting start-24
-                const fast1Pct = (endHour / 24) * 100;
-                let eatPct = ((startHour - endHour) / 24) * 100;
-                let fast2Pct = ((24 - startHour) / 24) * 100;
-                
-                if (startHour <= endHour) {
-                    // if fast is extremely long, handle differently (e.g. 23 hours)
-                    // End hour is e.g. 19. Start is 20.
-                    // Fasting from 0-19 (fast1), Eating 19-20 (eatPct), Fasting 20-24 (fast2)
-                    eatPct = ((startHour - endHour) / 24) * 100;
-                }
-                // For goal = 24, endHour = 20, eatPct = 0
-                
-                barHTML = `<div class="bar-segment fasting" style="height: ${fast1Pct}%;"></div><div class="bar-segment eating" style="height: ${eatPct}%;"></div><div class="bar-segment fasting" style="height: ${fast2Pct}%;"></div>`;
-            }
+        if (typeof planIdOrHours === 'string' && CUSTOM_SCHEDULES[planIdOrHours]) {
+            // Custom Schedule Logic
+            const custom = CUSTOM_SCHEDULES[planIdOrHours];
             
-            chartHTML += `<div class="day-col"><div class="bar-wrapper">${barHTML}</div><span class="x-label">${day}</span></div>`;
-        });
+            // Render Custom Chart
+            custom.days.forEach((dayData, index) => {
+                let barHTML = '';
+                if (dayData.fast1Pct !== undefined) {
+                    barHTML = `<div class="bar-segment fasting" style="height: ${dayData.fast1Pct}%;"></div>` +
+                              `<div class="bar-segment eating" style="height: ${dayData.eatPct}%;"></div>` +
+                              `<div class="bar-segment fasting" style="height: ${dayData.fast2Pct}%;"></div>`;
+                } else {
+                    barHTML = `<div class="bar-segment eating" style="height: ${dayData.eatPct}%;"></div>` +
+                              `<div class="bar-segment fasting" style="height: ${dayData.fastPct}%;"></div>`;
+                }
+                chartHTML += `<div class="day-col"><div class="bar-wrapper">${barHTML}</div><span class="x-label">${days[index]}</span></div>`;
+            });
+            
+            // Render Custom Schedule
+            custom.periods.forEach((periodStr, i) => {
+                scheduleHTML += `<div class="schedule-item"><strong>Period ${i+1}:</strong> <span>${periodStr}</span></div>`;
+            });
+            
+        } else {
+            // Regular Math-Based Schedule Logic
+            const goalHours = parseInt(planIdOrHours, 10);
+            const startHour = 20; // 8 PM
+            const endHour = (startHour + goalHours) % 24;
+            
+            days.forEach((day, index) => {
+                let barHTML = '';
+                if (index === 0) {
+                    const eatPct = (startHour / 24) * 100;
+                    const fastPct = ((24 - startHour) / 24) * 100;
+                    barHTML = `<div class="bar-segment eating" style="height: ${eatPct}%;"></div><div class="bar-segment fasting" style="height: ${fastPct}%;"></div>`;
+                } else if (index === 7) {
+                    const fastPct = (endHour / 24) * 100;
+                    const eatPct = ((24 - endHour) / 24) * 100;
+                    barHTML = `<div class="bar-segment fasting" style="height: ${fastPct}%;"></div><div class="bar-segment eating" style="height: ${eatPct}%;"></div>`;
+                } else {
+                    const fast1Pct = (endHour / 24) * 100;
+                    let eatPct = ((startHour - endHour) / 24) * 100;
+                    let fast2Pct = ((24 - startHour) / 24) * 100;
+                    
+                    if (startHour <= endHour) {
+                        eatPct = ((startHour - endHour) / 24) * 100;
+                    }
+                    barHTML = `<div class="bar-segment fasting" style="height: ${fast1Pct}%;"></div><div class="bar-segment eating" style="height: ${eatPct}%;"></div><div class="bar-segment fasting" style="height: ${fast2Pct}%;"></div>`;
+                }
+                chartHTML += `<div class="day-col"><div class="bar-wrapper">${barHTML}</div><span class="x-label">${day}</span></div>`;
+            });
+            
+            const fullDays = ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue'];
+            const startTimeStr = formatTime(startHour);
+            const endTimeStr = formatTime(endHour);
+            
+            for (let i = 0; i < 7; i++) {
+                scheduleHTML += `<div class="schedule-item"><strong>Period ${i+1}:</strong> <span>${fullDays[i]} ${startTimeStr} – ${fullDays[i+1]} ${endTimeStr}</span></div>`;
+            }
+        }
         
+        // Apply HTML to DOM
         chartBarsContainer.innerHTML = chartHTML;
         const editorChartBarsContainer = document.getElementById('editor-chart-bars-container');
         if (editorChartBarsContainer) editorChartBarsContainer.innerHTML = chartHTML;
-        
-        // Render Schedule List
-        const fullDays = ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue'];
-        let scheduleHTML = '';
-        const startTimeStr = formatTime(startHour);
-        const endTimeStr = formatTime(endHour);
-        
-        for (let i = 0; i < 7; i++) {
-            scheduleHTML += `<div class="schedule-item"><strong>Period ${i+1}:</strong> <span>${fullDays[i]} ${startTimeStr} – ${fullDays[i+1]} ${endTimeStr}</span></div>`;
-        }
         
         scheduleListContainer.innerHTML = scheduleHTML;
         const editorScheduleListContainer = document.getElementById('editor-schedule-list-container');
@@ -239,17 +279,23 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add active class to clicked
             card.classList.add('active-plan');
             
-            // Set pending goal
-            pendingGoalHours = parseInt(card.getAttribute('data-hours'), 10);
-            
             // Update detail view text
             const detailRatio = document.getElementById('detail-plan-ratio');
             if (detailRatio) detailRatio.textContent = card.querySelector('.plan-title').textContent;
             detailTitle.textContent = card.querySelector('.plan-desc').textContent;
             detailDesc.textContent = card.getAttribute('data-long-desc');
-            
-            // Render dynamic content
-            renderPlanDetails(pendingGoalHours);
+
+            // Set pending goal
+            if (card.hasAttribute('data-plan-id')) {
+                const planId = card.getAttribute('data-plan-id');
+                pendingGoalHours = CUSTOM_SCHEDULES[planId] ? CUSTOM_SCHEDULES[planId].goalHours : 16;
+                // Render dynamic content
+                renderPlanDetails(planId);
+            } else {
+                pendingGoalHours = parseInt(card.getAttribute('data-hours'), 10);
+                // Render dynamic content
+                renderPlanDetails(pendingGoalHours);
+            }
             
             // Slide in the view
             planDetailView.classList.add('active');
