@@ -69,6 +69,9 @@
                         <div class="plan-desc">Helps losing weight</div>
                     </div>
                 </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button class="outline-btn" id="open-special-plans-btn" style="width: 100%;">Special Plans</button>
+                </div>
             </section>
 
         </main>
@@ -247,6 +250,112 @@
                 
                 <div style="display: flex; justify-content: center; margin-top: 20px; padding-bottom: 40px;">
                     <button class="text-btn-teal" id="add-period-btn">+ Add period</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Special Plans View -->
+        <div id="special-plans-view" class="slide-view">
+            <div class="editor-header">
+                <button class="icon-button back-btn" id="close-special-plans-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <h2 class="editor-title" style="flex: 1; text-align: center;">Special Plans</h2>
+                <div style="width: 44px;"></div> <!-- Spacer -->
+            </div>
+            
+            <div class="plan-detail-content" style="padding: 20px; overflow-y: auto;">
+                <div class="plans-grid" style="display: flex; flex-direction: column; gap: 15px;">
+                    <!-- 22 Generated Plans -->
+                    <div class="plan-card glass" data-hours="12" data-long-desc="A gentle start for beginners.">
+                        <div class="plan-title">12-12</div>
+                        <div class="plan-desc">Gentle Start</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="13" data-long-desc="Easy transition into fasting.">
+                        <div class="plan-title">13-11</div>
+                        <div class="plan-desc">Easy Routine</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="15" data-long-desc="A balanced approach to intermittent fasting.">
+                        <div class="plan-title">15-9</div>
+                        <div class="plan-desc">Balanced Approach</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="17" data-long-desc="Deep fat burning stage activated.">
+                        <div class="plan-title">17-7</div>
+                        <div class="plan-desc">Deep Fat Burn</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="19" data-long-desc="The Warrior Diet method.">
+                        <div class="plan-title">19-5</div>
+                        <div class="plan-desc">Warrior Diet</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="20" data-long-desc="A rigorous routine for fast results.">
+                        <div class="plan-title">20-4</div>
+                        <div class="plan-desc">The Spartan</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="22" data-long-desc="An extended version of One Meal A Day.">
+                        <div class="plan-title">22-2</div>
+                        <div class="plan-desc">Extended OMAD</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="24" data-long-desc="A full 24 hour reset for your system.">
+                        <div class="plan-title">24-0</div>
+                        <div class="plan-desc">24 Hour Reset</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="36" data-long-desc="The Monk Fast - deep cellular cleansing.">
+                        <div class="plan-title">36-0</div>
+                        <div class="plan-desc">Monk Fast</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="16" data-long-desc="Eat normally 5 days, restrict for 2.">
+                        <div class="plan-title">5:2 Method</div>
+                        <div class="plan-desc">Weekly Balance</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="16" data-long-desc="Eat normally 4 days, restrict for 3.">
+                        <div class="plan-title">4:3 Method</div>
+                        <div class="plan-desc">Aggressive Weekly</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="24" data-long-desc="Occasional 24h fasts once or twice a week.">
+                        <div class="plan-title">Eat-Stop-Eat</div>
+                        <div class="plan-desc">Occasional 24h</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="13" data-long-desc="Aligning meals with your natural body clock.">
+                        <div class="plan-title">Circadian</div>
+                        <div class="plan-desc">Body Clock</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="16" data-long-desc="Delay your first meal until lunch.">
+                        <div class="plan-title">Morning Fast</div>
+                        <div class="plan-desc">Skip Breakfast</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="16" data-long-desc="Eat breakfast and lunch, skip dinner.">
+                        <div class="plan-title">Evening Fast</div>
+                        <div class="plan-desc">Skip Dinner</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="16" data-long-desc="Restrict to exactly 800 calories.">
+                        <div class="plan-title">The 800</div>
+                        <div class="plan-desc">Calorie Restriction</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="36" data-long-desc="Fasting every other day.">
+                        <div class="plan-title">Alternate Day</div>
+                        <div class="plan-desc">The Shift</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="48" data-long-desc="A pure detox with only water.">
+                        <div class="plan-title">Water Fast</div>
+                        <div class="plan-desc">Pure Detox</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="48" data-long-desc="Gut healing with bone broth only.">
+                        <div class="plan-title">Bone Broth</div>
+                        <div class="plan-desc">Gut Healing</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="24" data-long-desc="A high-fat fast to quickly enter ketosis.">
+                        <div class="plan-title">Fat Fast</div>
+                        <div class="plan-desc">Keto Boost</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="48" data-long-desc="A full two-day system cleanse.">
+                        <div class="plan-title">48-0</div>
+                        <div class="plan-desc">Two Day Cleanse</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="72" data-long-desc="Deep autophagy and immune system reset.">
+                        <div class="plan-title">72-0</div>
+                        <div class="plan-desc">Deep Autophagy</div>
+                    </div>
                 </div>
             </div>
         </div>

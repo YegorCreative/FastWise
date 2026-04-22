@@ -215,6 +215,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Special Plans View Navigation
+    const specialPlansView = document.getElementById('special-plans-view');
+    const openSpecialPlansBtn = document.getElementById('open-special-plans-btn');
+    const closeSpecialPlansBtn = document.getElementById('close-special-plans-btn');
+
+    if (openSpecialPlansBtn) {
+        openSpecialPlansBtn.addEventListener('click', () => {
+            specialPlansView.classList.add('active');
+        });
+    }
+
+    if (closeSpecialPlansBtn) {
+        closeSpecialPlansBtn.addEventListener('click', () => {
+            specialPlansView.classList.remove('active');
+        });
+    }
+
     // Plan Selection interaction
     planCards.forEach(card => {
         card.addEventListener('click', () => {
