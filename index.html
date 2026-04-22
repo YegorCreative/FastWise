@@ -26,7 +26,7 @@
         </header>
 
         <!-- Main Content -->
-        <main class="app-main">
+        <main class="app-main" id="fasting-view">
             <!-- Timer Section -->
             <section class="timer-section">
                 <div class="timer-card">
@@ -95,19 +95,76 @@
             </section>
         </main>
 
+        <!-- Me / Profile View -->
+        <main class="app-main hidden-view" id="me-view">
+            <section class="profile-section">
+                <div class="section-header">
+                    <h2>My Stats</h2>
+                </div>
+                <div class="stats-card glass">
+                    <div class="stat-input-group">
+                        <label for="user-weight">Weight (kg)</label>
+                        <input type="number" id="user-weight" placeholder="e.g. 70" class="stat-input">
+                    </div>
+                    <div class="stat-input-group">
+                        <label for="user-height">Height (cm)</label>
+                        <input type="number" id="user-height" placeholder="e.g. 175" class="stat-input">
+                    </div>
+                    <div class="bmi-display">
+                        <span class="bmi-label">Your BMI:</span>
+                        <span class="bmi-value" id="user-bmi">--</span>
+                    </div>
+                    <button class="primary-btn" id="save-stats-btn" style="width: 100%; margin-top: 15px;">Save Stats</button>
+                </div>
+            </section>
+
+            <section class="water-section" style="margin-top: 30px;">
+                <div class="section-header">
+                    <h2>Water Tracker</h2>
+                </div>
+                <div class="water-card glass">
+                    <div class="water-header">
+                        <div class="water-info">
+                            <span class="water-current" id="water-current">0</span>
+                            <span class="water-goal">/ 2000 ml</span>
+                        </div>
+                    </div>
+                    <div class="water-progress-bar">
+                        <div class="water-progress-fill" id="water-progress-fill" style="width: 0%;"></div>
+                    </div>
+                    <div class="water-actions" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+                        <button class="water-btn" data-amount="250">+250ml</button>
+                        <button class="water-btn" data-amount="500">+500ml</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
         <!-- Bottom Navigation -->
         <nav class="bottom-nav glass-nav">
-            <button class="nav-item active">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                <span>Home</span>
+            <button class="nav-item active" data-target="fasting-view">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Fasting</span>
+            </button>
+            <button class="nav-item" data-target="me-view">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Me</span>
             </button>
             <button class="nav-item">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
-                <span>Stats</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="13" r="2"/><path d="m20 17-1.89-1.89"/></svg>
+                <span>Scan</span>
             </button>
             <button class="nav-item">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                <span>Settings</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span>Coach</span>
+            </button>
+            <button class="nav-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 8-4-4-6 6"/><path d="M15 11 9 5 4 10l6 6"/><path d="m10 16-4 4-2-2 4-4"/></svg>
+                <span>Recipes</span>
+            </button>
+            <button class="nav-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span>Help</span>
             </button>
         </nav>
         <!-- Plan Detail View (Hidden by default) -->

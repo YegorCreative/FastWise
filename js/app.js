@@ -91,11 +91,26 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Navigation interaction
     const navItems = document.querySelectorAll('.nav-item');
+    const views = {
+        'fasting-view': document.getElementById('fasting-view'),
+        'me-view': document.getElementById('me-view')
+    };
+
     navItems.forEach(item => {
         item.addEventListener('click', () => {
+            // Remove active from all
             navItems.forEach(nav => nav.classList.remove('active'));
+            // Add active to clicked
             item.classList.add('active');
-            // Logic to switch views would go here
+            
+            // Switch views
+            const target = item.getAttribute('data-target');
+            if (target && views[target]) {
+                Object.values(views).forEach(v => {
+                    if (v) v.classList.add('hidden-view');
+                });
+                views[target].classList.remove('hidden-view');
+            }
         });
     });
     // Slide view elements
@@ -212,5 +227,66 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Close view
         planDetailView.classList.remove('active');
+    });
+
+    // --- Profile & Water Logic ---
+    const weightInput = document.getElementById('user-weight');
+    const heightInput = document.getElementById('user-height');
+    const bmiDisplay = document.getElementById('user-bmi');
+    const saveStatsBtn = document.getElementById('save-stats-btn');
+
+    const waterCurrentDisplay = document.getElementById('water-current');
+    const waterProgressFill = document.getElementById('water-progress-fill');
+    const waterBtns = document.querySelectorAll('.water-btn');
+    const WATER_GOAL = 2000;
+    
+    // Load saved stats
+    const savedWeight = localStorage.getItem('fastwise_weight');
+    const savedHeight = localStorage.getItem('fastwise_height');
+    let currentWater = parseInt(localStorage.getItem('fastwise_water') || '0', 10);
+    
+    if (savedWeight) weightInput.value = savedWeight;
+    if (savedHeight) heightInput.value = savedHeight;
+    updateBMI();
+    updateWaterUI();
+
+    function updateBMI() {
+        const w = parseFloat(weightInput.value);
+        const h = parseFloat(heightInput.value) / 100; // cm to m
+        if (w > 0 && h > 0) {
+            const bmi = (w / (h * h)).toFixed(1);
+            bmiDisplay.textContent = bmi;
+        } else {
+            bmiDisplay.textContent = '--';
+        }
+    }
+
+    if (saveStatsBtn) {
+        saveStatsBtn.addEventListener('click', () => {
+            localStorage.setItem('fastwise_weight', weightInput.value);
+            localStorage.setItem('fastwise_height', heightInput.value);
+            updateBMI();
+            
+            // Brief visual feedback
+            const originalText = saveStatsBtn.textContent;
+            saveStatsBtn.textContent = 'Saved!';
+            setTimeout(() => saveStatsBtn.textContent = originalText, 2000);
+        });
+    }
+
+    function updateWaterUI() {
+        if (!waterCurrentDisplay) return;
+        waterCurrentDisplay.textContent = currentWater;
+        const pct = Math.min((currentWater / WATER_GOAL) * 100, 100);
+        waterProgressFill.style.width = `${pct}%`;
+        localStorage.setItem('fastwise_water', currentWater.toString());
+    }
+
+    waterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const amount = parseInt(btn.getAttribute('data-amount'), 10);
+            currentWater += amount;
+            updateWaterUI();
+        });
     });
 });
