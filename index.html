@@ -205,10 +205,49 @@
                 <div class="schedule-list" id="schedule-list-container">
                     <!-- Dynamically generated -->
                 </div>
+
+                <div class="action-buttons-group">
+                    <button class="outline-btn" id="open-editor-btn">Change times</button>
+                    <button class="pink-btn" id="joker-day-btn">Joker day</button>
+                </div>
             </div>
             
             <div class="action-footer">
                 <button class="primary-btn" id="start-week-btn" style="width: 100%; max-width: 100%;">Start week</button>
+            </div>
+        </div>
+
+        <!-- Plan Editor View -->
+        <div id="plan-editor-view" class="slide-view">
+            <div class="editor-header">
+                <button class="text-btn" id="cancel-editor-btn">Cancel</button>
+                <h2 class="editor-title">Plan Editor</h2>
+                <button class="pill-btn-grey" id="done-editor-btn">Done</button>
+            </div>
+            
+            <div class="plan-detail-content" style="padding-top: 20px;">
+                <div class="chart-section" style="margin-top: 0;">
+                    <div class="chart-container">
+                        <div class="y-axis">
+                            <span>0h</span>
+                            <span>6h</span>
+                            <span>12h</span>
+                            <span>18h</span>
+                            <span>24h</span>
+                        </div>
+                        <div class="bars-container" id="editor-chart-bars-container">
+                            <!-- Dynamically generated -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-list" id="editor-schedule-list-container">
+                    <!-- Dynamically generated -->
+                </div>
+                
+                <div style="display: flex; justify-content: center; margin-top: 20px; padding-bottom: 40px;">
+                    <button class="text-btn-teal" id="add-period-btn">+ Add period</button>
+                </div>
             </div>
         </div>
 

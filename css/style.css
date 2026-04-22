@@ -660,3 +660,87 @@ body {
     display: flex;
     justify-content: center;
 }
+
+/* Plan Editor & New Action Buttons */
+.action-buttons-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+    margin-bottom: 80px; /* Space for sticky footer */
+}
+
+.outline-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 200px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    transition: all 0.2s ease;
+}
+
+.pink-btn {
+    background: #d83b92; /* Match screenshot */
+    border: none;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 200px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    transition: all 0.2s ease;
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--surface-border);
+}
+
+.text-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: var(--font-family);
+}
+
+.text-btn-teal {
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-family);
+}
+
+.editor-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.pill-btn-grey {
+    background: rgba(255, 255, 255, 0.1); 
+    border: none;
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-family);
+}

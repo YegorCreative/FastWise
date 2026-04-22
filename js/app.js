@@ -172,6 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         chartBarsContainer.innerHTML = chartHTML;
+        const editorChartBarsContainer = document.getElementById('editor-chart-bars-container');
+        if (editorChartBarsContainer) editorChartBarsContainer.innerHTML = chartHTML;
         
         // Render Schedule List
         const fullDays = ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue'];
@@ -184,6 +186,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         scheduleListContainer.innerHTML = scheduleHTML;
+        const editorScheduleListContainer = document.getElementById('editor-schedule-list-container');
+        if (editorScheduleListContainer) editorScheduleListContainer.innerHTML = scheduleHTML;
+    }
+
+    // Plan Editor View Navigation
+    const planEditorView = document.getElementById('plan-editor-view');
+    const openEditorBtn = document.getElementById('open-editor-btn');
+    const cancelEditorBtn = document.getElementById('cancel-editor-btn');
+    const doneEditorBtn = document.getElementById('done-editor-btn');
+
+    if (openEditorBtn) {
+        openEditorBtn.addEventListener('click', () => {
+            planEditorView.classList.add('active');
+        });
+    }
+
+    if (cancelEditorBtn) {
+        cancelEditorBtn.addEventListener('click', () => {
+            planEditorView.classList.remove('active');
+        });
+    }
+
+    if (doneEditorBtn) {
+        doneEditorBtn.addEventListener('click', () => {
+            planEditorView.classList.remove('active');
+            // Normally this would save any changes made in the editor
+        });
     }
 
     // Plan Selection interaction
