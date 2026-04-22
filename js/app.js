@@ -148,6 +148,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Sat 8:00 PM – Sun 12:00 PM",
                 "Mon 12:00 AM – Tue 6:00 AM"
             ]
+        },
+        'power-week-2': {
+            goalHours: 18,
+            days: [
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 }, // Tu
+                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 }, // We
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 }, // Th
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 }, // Fr: 12am to 12am is 24h
+                { fast1Pct: 0, eatPct: (14/24)*100, fast2Pct: (10/24)*100 }, // Sa: 2pm to 12pm Sun
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 }, // Su: finish fast at 12pm
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 }, // Mo: 12am to 12am
+                { fast1Pct: 0, eatPct: 100, fast2Pct: 0 } // Tu
+            ],
+            periods: [
+                "Tue 8:00 PM – Wed 12:00 PM",
+                "Wed 8:00 PM – Thu 12:00 PM",
+                "Fri 12:00 AM – Sat 12:00 AM",
+                "Sat 2:00 PM – Sun 12:00 PM",
+                "Mon 12:00 AM – Tue 12:00 AM"
+            ]
         }
     };
 
