@@ -104,7 +104,71 @@ document.addEventListener('DOMContentLoaded', () => {
     const startWeekBtn = document.getElementById('start-week-btn');
     const detailTitle = document.getElementById('detail-plan-title');
     const detailDesc = document.getElementById('detail-plan-desc');
+    const chartBarsContainer = document.getElementById('chart-bars-container');
+    const scheduleListContainer = document.getElementById('schedule-list-container');
     let pendingGoalHours = 16;
+    
+    function formatTime(hour24) {
+        if (hour24 === 0 || hour24 === 24) return '12:00 AM';
+        if (hour24 === 12) return '12:00 PM';
+        if (hour24 > 12) return `${hour24 - 12}:00 PM`;
+        return `${hour24}:00 AM`;
+    }
+
+    function renderPlanDetails(goalHours) {
+        const startHour = 20; // 8 PM
+        const endHour = (startHour + goalHours) % 24;
+        
+        // Render Chart
+        const days = ['Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu'];
+        let chartHTML = '';
+        
+        days.forEach((day, index) => {
+            let barHTML = '';
+            if (index === 0) {
+                // First day: Eating 0-start, Fasting start-24
+                const eatPct = (startHour / 24) * 100;
+                const fastPct = ((24 - startHour) / 24) * 100;
+                barHTML = `<div class="bar-segment eating" style="height: ${eatPct}%;"></div><div class="bar-segment fasting" style="height: ${fastPct}%;"></div>`;
+            } else if (index === 7) {
+                // Last day: Fasting 0-end, Eating end-24
+                const fastPct = (endHour / 24) * 100;
+                const eatPct = ((24 - endHour) / 24) * 100;
+                barHTML = `<div class="bar-segment fasting" style="height: ${fastPct}%;"></div><div class="bar-segment eating" style="height: ${eatPct}%;"></div>`;
+            } else {
+                // Middle days: Fasting 0-end, Eating end-start, Fasting start-24
+                const fast1Pct = (endHour / 24) * 100;
+                let eatPct = ((startHour - endHour) / 24) * 100;
+                let fast2Pct = ((24 - startHour) / 24) * 100;
+                
+                if (startHour <= endHour) {
+                    // if fast is extremely long, handle differently (e.g. 23 hours)
+                    // End hour is e.g. 19. Start is 20.
+                    // Fasting from 0-19 (fast1), Eating 19-20 (eatPct), Fasting 20-24 (fast2)
+                    eatPct = ((startHour - endHour) / 24) * 100;
+                }
+                // For goal = 24, endHour = 20, eatPct = 0
+                
+                barHTML = `<div class="bar-segment fasting" style="height: ${fast1Pct}%;"></div><div class="bar-segment eating" style="height: ${eatPct}%;"></div><div class="bar-segment fasting" style="height: ${fast2Pct}%;"></div>`;
+            }
+            
+            chartHTML += `<div class="day-col"><div class="bar-wrapper">${barHTML}</div><span class="x-label">${day}</span></div>`;
+        });
+        
+        chartBarsContainer.innerHTML = chartHTML;
+        
+        // Render Schedule List
+        const fullDays = ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue'];
+        let scheduleHTML = '';
+        const startTimeStr = formatTime(startHour);
+        const endTimeStr = formatTime(endHour);
+        
+        for (let i = 0; i < 7; i++) {
+            scheduleHTML += `<div class="schedule-item"><strong>Period ${i+1}:</strong> <span>${fullDays[i]} ${startTimeStr} – ${fullDays[i+1]} ${endTimeStr}</span></div>`;
+        }
+        
+        scheduleListContainer.innerHTML = scheduleHTML;
+    }
 
     // Plan Selection interaction
     planCards.forEach(card => {
@@ -124,6 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (detailRatio) detailRatio.textContent = card.querySelector('.plan-title').textContent;
             detailTitle.textContent = card.querySelector('.plan-desc').textContent;
             detailDesc.textContent = card.getAttribute('data-long-desc');
+            
+            // Render dynamic content
+            renderPlanDetails(pendingGoalHours);
             
             // Slide in the view
             planDetailView.classList.add('active');
