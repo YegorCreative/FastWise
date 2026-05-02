@@ -901,3 +901,288 @@ body {
 .kb-answer strong {
     color: var(--text-main);
 }
+
+/* =============================================
+   FASTING STAGES BAR (on timer card)
+   ============================================= */
+.stages-bar {
+    margin-top: 12px;
+    padding: 0 4px;
+}
+.stages-bar-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    color: var(--text-main);
+    font-family: var(--font-family);
+    font-size: 0.82rem;
+    transition: background 0.2s;
+}
+.stages-bar-btn:hover { background: rgba(255,255,255,0.12); }
+.stages-bar-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+.stages-bar-label svg { color: #f97316; flex-shrink: 0; }
+
+/* =============================================
+   FASTING STAGES FULL VIEW
+   ============================================= */
+.stages-view {
+    background: #f5f0e8 !important;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.stages-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 16px 12px;
+    background: #f5f0e8;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    flex-shrink: 0;
+}
+.stages-title {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+    text-align: center;
+    flex: 1;
+}
+.stages-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.08);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+.stages-close-btn:hover { background: rgba(0,0,0,0.14); }
+
+/* Top split: timeline left, body SVG right */
+.stages-top {
+    display: flex;
+    flex: 0 0 auto;
+    height: 295px;
+    overflow: hidden;
+    background: #f5f0e8;
+}
+
+/* Timeline */
+.stages-timeline {
+    width: 175px;
+    flex-shrink: 0;
+    padding: 12px 0 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.stages-timeline::-webkit-scrollbar { display: none; }
+
+.stage-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+    cursor: pointer;
+    position: relative;
+}
+/* Vertical connector line */
+.stage-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 36px;
+    bottom: -6px;
+    width: 2px;
+    background: #d1c8b8;
+}
+.stage-icon-wrap {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e2ddd4;
+    border: 2px solid #c4bfb5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    z-index: 1;
+}
+.stage-icon-wrap svg { color: #94a3b8; transition: color 0.3s; }
+.stage-text { padding-top: 4px; }
+.stage-label {
+    font-family: var(--font-family);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #64748b;
+    line-height: 1.2;
+    transition: color 0.3s;
+}
+.stage-sublabel {
+    font-family: var(--font-family);
+    font-size: 0.62rem;
+    color: #94a3b8;
+    margin-top: 1px;
+    line-height: 1.2;
+    transition: color 0.3s;
+}
+
+/* Active stage */
+.stage-item.active .stage-icon-wrap {
+    background: #f97316;
+    border-color: #f97316;
+    box-shadow: 0 0 0 4px rgba(249,115,22,0.18);
+}
+.stage-item.active .stage-icon-wrap svg { color: #fff; }
+.stage-item.active .stage-label { color: #f97316; font-weight: 700; }
+.stage-item.active .stage-sublabel { color: #f97316; opacity: 0.8; }
+
+/* Reached stage (past) */
+.stage-item.reached .stage-icon-wrap {
+    background: #2dd4bf;
+    border-color: #2dd4bf;
+}
+.stage-item.reached .stage-icon-wrap svg { color: #fff; }
+.stage-item.reached .stage-label { color: #0f766e; }
+.stage-item.reached:not(:last-child)::after { background: #2dd4bf; }
+
+/* Body SVG */
+.stages-body-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px 8px 0;
+    overflow: hidden;
+}
+.stages-body-svg {
+    height: 100%;
+    max-height: 280px;
+    width: auto;
+}
+
+/* Organ default state — dimmed */
+.stages-body-svg .organ-brain ellipse,
+.stages-body-svg .organ-brain path,
+.stages-body-svg .organ-lungs path,
+.stages-body-svg .organ-heart path,
+.stages-body-svg .organ-liver path,
+.stages-body-svg .organ-stomach path,
+.stages-body-svg .organ-pancreas path,
+.stages-body-svg .organ-intestine path,
+.stages-body-svg .organ-intestine,
+.stages-body-svg .organ-fat ellipse {
+    opacity: 0.18;
+    transition: opacity 0.5s, fill 0.5s;
+}
+
+/* Stage 0 — Start: stomach, intestines, pancreas */
+.stages-body-svg[data-stage="0"] .organ-stomach path,
+.stages-body-svg[data-stage="0"] .organ-intestine path,
+.stages-body-svg[data-stage="0"] .organ-pancreas path { opacity: 0.88; }
+
+/* Stage 1 — Insulin: heart + liver */
+.stages-body-svg[data-stage="1"] .organ-heart path { opacity: 0.92; }
+.stages-body-svg[data-stage="1"] .organ-liver path { opacity: 0.85; }
+
+/* Stage 2 — Blood sugar: liver + stomach dims out */
+.stages-body-svg[data-stage="2"] .organ-liver path { opacity: 0.92; }
+.stages-body-svg[data-stage="2"] .organ-stomach path { opacity: 0.45; }
+
+/* Stage 3 — Fat burning: fat depots, liver */
+.stages-body-svg[data-stage="3"] .organ-fat ellipse { opacity: 0.82; }
+.stages-body-svg[data-stage="3"] .organ-liver path { opacity: 0.7; }
+
+/* Stage 4 — Ketosis: brain + liver */
+.stages-body-svg[data-stage="4"] .organ-brain ellipse,
+.stages-body-svg[data-stage="4"] .organ-brain path { opacity: 0.88; }
+.stages-body-svg[data-stage="4"] .organ-liver path { opacity: 0.7; }
+
+/* Stage 5 — Autophagy: all organs glow */
+.stages-body-svg[data-stage="5"] .organ-brain ellipse,
+.stages-body-svg[data-stage="5"] .organ-brain path,
+.stages-body-svg[data-stage="5"] .organ-lungs path,
+.stages-body-svg[data-stage="5"] .organ-heart path,
+.stages-body-svg[data-stage="5"] .organ-liver path,
+.stages-body-svg[data-stage="5"] .organ-stomach path,
+.stages-body-svg[data-stage="5"] .organ-pancreas path,
+.stages-body-svg[data-stage="5"] .organ-intestine path,
+.stages-body-svg[data-stage="5"] .organ-fat ellipse { opacity: 0.72; }
+
+/* Stage detail panel */
+.stages-detail {
+    flex: 1;
+    background: #fff;
+    border-radius: 24px 24px 0 0;
+    margin-top: 0;
+    padding: 22px 22px 40px;
+    overflow-y: auto;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+}
+.stages-detail-title {
+    font-family: var(--font-family);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 6px;
+    text-align: center;
+}
+.stages-detail-subtitle {
+    font-family: var(--font-family);
+    font-size: 0.82rem;
+    color: #64748b;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+.stages-detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.stages-detail-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-family: var(--font-family);
+    font-size: 0.82rem;
+    color: #334155;
+    line-height: 1.55;
+}
+.stages-detail-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #2dd4bf;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+}

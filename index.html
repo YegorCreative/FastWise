@@ -45,6 +45,16 @@
                     <!-- This button is now hidden by default and acts as End Fasting -->
                     <button class="primary-btn pulse" id="toggle-timer-btn" style="display: none; background: #e74c3c;">End Fasting</button>
                 </div>
+                <!-- Fasting Stages trigger — visible only while fasting -->
+                <div class="stages-bar" id="stages-bar" style="display:none;">
+                    <button class="stages-bar-btn" id="open-fasting-stages-btn">
+                        <span class="stages-bar-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <span id="stages-bar-text">Fasting has started</span>
+                        </span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
             </section>
 
             <!-- Plans Section -->
@@ -641,6 +651,92 @@
                         <div class="plan-desc">Deep Autophagy</div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Fasting Stages View -->
+        <div id="fasting-stages-view" class="slide-view stages-view" style="z-index: 260;">
+            <div class="stages-header">
+                <div style="width: 40px;"></div>
+                <h2 class="stages-title">Fasting stages</h2>
+                <button class="stages-close-btn" id="close-fasting-stages-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div class="stages-top">
+                <!-- Timeline -->
+                <div class="stages-timeline" id="stages-timeline">
+                    <!-- Populated by JS -->
+                </div>
+                <!-- Body illustration -->
+                <div class="stages-body-wrap">
+                    <svg class="stages-body-svg" id="stages-body-svg" viewBox="0 0 160 300" xmlns="http://www.w3.org/2000/svg" data-stage="0">
+                        <!-- Body outline -->
+                        <ellipse cx="80" cy="28" rx="24" ry="26" fill="#ede8e0" stroke="#c4a882" stroke-width="1.5"/>
+                        <rect x="71" y="52" width="18" height="16" rx="3" fill="#ede8e0" stroke="#c4a882" stroke-width="1.5"/>
+                        <path d="M28,68 Q16,76 14,96 L18,244 Q18,252 28,254 L132,254 Q142,252 142,244 L146,96 Q144,76 132,68 Q110,60 80,60 Q50,60 28,68Z" fill="#ede8e0" stroke="#c4a882" stroke-width="1.5"/>
+                        <!-- Arms -->
+                        <path d="M14,96 Q6,112 4,148 L14,178 Q17,183 23,180 L28,140 L22,96Z" fill="#ede8e0" stroke="#c4a882" stroke-width="1.5"/>
+                        <path d="M146,96 Q154,112 156,148 L146,178 Q143,183 137,180 L132,140 L138,96Z" fill="#ede8e0" stroke="#c4a882" stroke-width="1.5"/>
+
+                        <!-- BRAIN -->
+                        <g class="organ-brain">
+                            <ellipse cx="80" cy="23" rx="16" ry="17" fill="#c084fc"/>
+                            <path d="M68,19 Q74,13 80,19 Q86,13 92,19" fill="none" stroke="#9333ea" stroke-width="1.5"/>
+                            <path d="M66,25 Q72,20 78,25 Q83,20 89,25 Q94,20 98,25" fill="none" stroke="#9333ea" stroke-width="1.5" opacity="0.8"/>
+                        </g>
+
+                        <!-- LUNGS -->
+                        <g class="organ-lungs">
+                            <path d="M44,82 Q32,88 29,116 Q27,132 36,144 Q48,152 55,138 L57,86Z" fill="#fca5a5"/>
+                            <path d="M116,82 Q128,88 131,116 Q133,132 124,144 Q112,152 105,138 L103,86Z" fill="#fca5a5"/>
+                        </g>
+
+                        <!-- HEART -->
+                        <g class="organ-heart">
+                            <path d="M72,96 Q64,85 56,93 Q49,101 58,112 L80,130 L102,112 Q111,101 104,93 Q96,85 88,96 Q84,89 80,96 Q76,89 72,96Z" fill="#f87171"/>
+                        </g>
+
+                        <!-- LIVER -->
+                        <g class="organ-liver">
+                            <path d="M84,136 Q104,132 116,140 Q124,150 122,164 Q118,175 104,176 Q88,176 80,164 Q74,155 77,143Z" fill="#d97706"/>
+                        </g>
+
+                        <!-- STOMACH -->
+                        <g class="organ-stomach">
+                            <path d="M60,146 Q51,149 48,162 Q46,174 52,181 Q60,187 72,184 Q82,180 84,169 Q86,157 78,148Z" fill="#34d399"/>
+                        </g>
+
+                        <!-- PANCREAS -->
+                        <g class="organ-pancreas">
+                            <path d="M64,162 Q80,157 94,162 Q100,166 97,172 Q93,177 80,176 Q64,175 61,169Z" fill="#a78bfa"/>
+                        </g>
+
+                        <!-- INTESTINES -->
+                        <g class="organ-intestine">
+                            <path d="M36,186 Q33,202 34,218 Q36,230 46,234 Q62,238 80,236 Q98,238 114,234 Q124,230 126,218 Q127,202 124,186 Q120,178 112,181 L106,216 Q102,227 80,227 Q58,227 54,216 L48,181 Q40,178 36,186Z" fill="#6ee7b7"/>
+                            <path d="M54,186 Q62,196 70,188 Q79,181 88,191 Q94,200 86,209 Q78,217 69,211 Q60,206 58,217 Q57,222 66,224 Q80,226 94,222 Q103,217 101,209 Q99,200 108,194 Q114,186 108,180" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+                        </g>
+
+                        <!-- FAT deposits -->
+                        <g class="organ-fat">
+                            <ellipse cx="22" cy="168" rx="10" ry="28" fill="#fbbf24"/>
+                            <ellipse cx="138" cy="168" rx="10" ry="28" fill="#fbbf24"/>
+                            <ellipse cx="44" cy="232" rx="14" ry="15" fill="#fbbf24"/>
+                            <ellipse cx="116" cy="232" rx="14" ry="15" fill="#fbbf24"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Stage detail panel -->
+            <div class="stages-detail" id="stages-detail">
+                <h3 class="stages-detail-title" id="stages-detail-title">Start of the fast</h3>
+                <p class="stages-detail-subtitle" id="stages-detail-subtitle">You feel fairly normal during the first few hours. Your body is busy digesting.</p>
+                <ol class="stages-detail-list" id="stages-detail-list">
+                    <!-- Populated by JS -->
+                </ol>
             </div>
         </div>
 
