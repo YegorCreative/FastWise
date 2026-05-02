@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const CUSTOM_SCHEDULES = {
         'power-week': {
             goalHours: 18,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
             days: [
                 { eatPct: (20/24)*100, fastPct: (4/24)*100 },
                 { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 },
@@ -142,31 +143,295 @@ document.addEventListener('DOMContentLoaded', () => {
                 { fast1Pct: (6/24)*100, eatPct: (18/24)*100, fast2Pct: 0 }
             ],
             periods: [
-                "Tue 8:00 PM – Wed 12:00 PM",
-                "Wed 8:00 PM – Thu 12:00 PM",
-                "Fri 10:00 AM – Sat 6:00 AM",
+                "Fri 8:00 PM – Sat 12:00 PM",
                 "Sat 8:00 PM – Sun 12:00 PM",
-                "Mon 12:00 AM – Tue 6:00 AM"
+                "Mon 10:00 AM – Tue 6:00 AM",
+                "Tue 8:00 PM – Wed 12:00 PM",
+                "Thu 12:00 AM – Fri 6:00 AM"
             ]
         },
         'power-week-2': {
             goalHours: 18,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
             days: [
-                { eatPct: (20/24)*100, fastPct: (4/24)*100 }, // Tu
-                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 }, // We
-                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 }, // Th
-                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 }, // Fr: 12am to 12am is 24h
-                { fast1Pct: 0, eatPct: (14/24)*100, fast2Pct: (10/24)*100 }, // Sa: 2pm to 12pm Sun
-                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 }, // Su: finish fast at 12pm
-                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 }, // Mo: 12am to 12am
-                { fast1Pct: 0, eatPct: 100, fast2Pct: 0 } // Tu
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { eatPct: (14/24)*100, fastPct: (10/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { eatPct: 100, fastPct: 0 }
             ],
             periods: [
+                "Fri 8:00 PM – Sat 12:00 PM",
+                "Sat 8:00 PM – Sun 12:00 PM",
+                "Mon 12:00 AM – Tue 12:00 AM",
+                "Tue 2:00 PM – Wed 12:00 PM",
+                "Thu 12:00 AM – Fri 12:00 AM"
+            ]
+        },
+        'ice-dive': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: (15/24)*100, eatPct: (5/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (14/24)*100, eatPct: (6/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (13/24)*100, eatPct: (7/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (11/24)*100, eatPct: (9/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (10/24)*100, eatPct: (14/24)*100, fast2Pct: 0 },
+                { eatPct: 100, fastPct: 0 }
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 3:00 PM",
+                "Sat 8:00 PM – Sun 2:00 PM",
+                "Sun 8:00 PM – Mon 1:00 PM",
+                "Mon 8:00 PM – Tue 12:00 PM",
+                "Tue 8:00 PM – Wed 11:00 AM",
+                "Wed 8:00 PM – Thu 10:00 AM"
+            ]
+        },
+        'fast-in-peace': {
+            goalHours: 14,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: (10/24)*100, eatPct: (10/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (10/24)*100, eatPct: (10/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (10/24)*100, eatPct: (10/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (10/24)*100, eatPct: (10/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { fast1Pct: (10/24)*100, eatPct: (4/24)*100, fast2Pct: (10/24)*100 },
+                { fast1Pct: (6/24)*100, eatPct: (18/24)*100, fast2Pct: 0 }
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 10:00 AM",
+                "Sat 8:00 PM – Sun 10:00 AM",
+                "Sun 8:00 PM – Mon 10:00 AM",
+                "Mon 8:00 PM – Tue 10:00 AM",
+                "Tue 8:00 PM – Thu 10:00 AM",
+                "Thu 2:00 PM – Fri 6:00 AM"
+            ]
+        },
+        'weekend-faster-2': {
+            goalHours: 14,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: (10/24)*100, eatPct: (10/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (10/24)*100, eatPct: (10/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (10/24)*100, eatPct: (10/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (10/24)*100, eatPct: (10/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (10/24)*100, eatPct: (4/24)*100, fast2Pct: (10/24)*100 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { fast1Pct: (6/24)*100, eatPct: (18/24)*100, fast2Pct: 0 }
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 10:00 AM",
+                "Sat 8:00 PM – Sun 10:00 AM",
+                "Sun 8:00 PM – Mon 10:00 AM",
+                "Mon 8:00 PM – Tue 10:00 AM",
+                "Tue 8:00 PM – Wed 10:00 AM",
+                "Wed 2:00 PM – Fri 6:00 AM"
+            ]
+        },
+        'feel-good': {
+            goalHours: 18,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                { eatPct: 100, fastPct: 0 },
+                { eatPct: (14/24)*100, fastPct: (10/24)*100 },
+                { fast1Pct: (8/24)*100, eatPct: (16/24)*100, fast2Pct: 0 },
+                { fast1Pct: (18/24)*100, eatPct: (6/24)*100, fast2Pct: 0 },
+                { eatPct: 100, fastPct: 0 },
+                { eatPct: (14/24)*100, fastPct: (10/24)*100 },
+                { fast1Pct: (8/24)*100, eatPct: (16/24)*100, fast2Pct: 0 },
+                { eatPct: 100, fastPct: 0 }
+            ],
+            periods: [
+                "Sat 2:00 PM – Sun 8:00 AM",
+                "Mon 12:00 AM – Mon 6:00 PM",
+                "Wed 2:00 PM – Thu 8:00 AM"
+            ]
+        },
+        'joy-in-the-evening': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (10/24)*100, fast2Pct: (2/24)*100 },
+                { fast1Pct: (16/24)*100, eatPct: (6/24)*100, fast2Pct: (2/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (10/24)*100, fast2Pct: (2/24)*100 },
+                { fast1Pct: (16/24)*100, eatPct: (6/24)*100, fast2Pct: (2/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (10/24)*100, fast2Pct: (2/24)*100 },
+                { fast1Pct: (16/24)*100, eatPct: (8/24)*100, fast2Pct: 0 },
+                { eat1Pct: (10/24)*100, fastPct: (6/24)*100, eat2Pct: (8/24)*100 }
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 12:00 PM",
+                "Sat 10:00 PM – Sun 4:00 PM",
+                "Sun 10:00 PM – Mon 12:00 PM",
+                "Mon 10:00 PM – Tue 4:00 PM",
+                "Tue 10:00 PM – Wed 12:00 PM",
+                "Wed 10:00 PM – Thu 4:00 PM",
+                "Fri 10:00 AM – Fri 4:00 PM"
+            ]
+        },
+        'dynamic-duo-breakfast': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 }
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 12:00 PM",
+                "Sun 12:00 AM – Mon 12:00 AM",
+                "Mon 8:00 PM – Tue 12:00 PM",
+                "Wed 12:00 AM – Thu 12:00 AM",
+                "Thu 8:00 PM – Fri 12:00 PM"
+            ]
+        },
+        'dynamic-duo-dinner': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                { eatPct: (14/24)*100, fastPct: (10/24)*100 },
+                { fast1Pct: (6/24)*100, eatPct: (18/24)*100, fast2Pct: 0 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { eatPct: (14/24)*100, fastPct: (10/24)*100 },
+                { fast1Pct: (6/24)*100, eatPct: (18/24)*100, fast2Pct: 0 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { eatPct: (14/24)*100, fastPct: (10/24)*100 },
+                { fast1Pct: (6/24)*100, eatPct: (18/24)*100, fast2Pct: 0 }
+            ],
+            periods: [
+                "Fri 2:00 PM – Sat 6:00 AM",
+                "Sun 12:00 AM – Mon 12:00 AM",
+                "Mon 2:00 PM – Tue 6:00 AM",
+                "Wed 12:00 AM – Thu 12:00 AM",
+                "Thu 2:00 PM – Fri 6:00 AM"
+            ]
+        },
+        'dynamic-duo-plus': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 }
+            ],
+            periods: [
+                "Fri 8:00 PM – Sun 12:00 PM",
+                "Sun 8:00 PM – Mon 12:00 PM",
+                "Mon 8:00 PM – Wed 12:00 PM",
+                "Wed 8:00 PM – Thu 12:00 PM",
+                "Thu 8:00 PM – Fri 12:00 PM"
+            ]
+        },
+        'spring-fasting': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 },
+                { fast1Pct: 100, eatPct: 0, fast2Pct: 0 },
+                { eatPct: (20/24)*100, fastPct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (8/24)*100, fast2Pct: (4/24)*100 },
+                { fast1Pct: (12/24)*100, eatPct: (12/24)*100, fast2Pct: 0 }
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 12:00 PM",
+                "Sat 8:00 PM – Sun 12:00 PM",
+                "Mon 12:00 AM – Tue 12:00 AM",
                 "Tue 8:00 PM – Wed 12:00 PM",
                 "Wed 8:00 PM – Thu 12:00 PM",
-                "Fri 12:00 AM – Sat 12:00 AM",
-                "Sat 2:00 PM – Sun 12:00 PM",
-                "Mon 12:00 AM – Tue 12:00 AM"
+                "Thu 8:00 PM – Fri 12:00 PM"
+            ]
+        },
+        'stone-age': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (18/24)*100}, {type: 'fasting', pct: (6/24)*100} ],
+                [ {type: 'eating', pct: (2/24)*100}, {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (2/24)*100} ],
+                [ {type: 'fasting', pct: (18/24)*100}, {type: 'eating', pct: (6/24)*100} ],
+                [ {type: 'eating', pct: (9/24)*100}, {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (5/24)*100} ],
+                [ {type: 'eating', pct: (10/24)*100}, {type: 'fasting', pct: (14/24)*100} ],
+                [ {type: 'fasting', pct: (14/24)*100}, {type: 'eating', pct: (6/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (4/24)*100}, {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (2/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (14/24)*100}, {type: 'eating', pct: (10/24)*100} ]
+            ],
+            periods: [
+                "Fri 6:00 PM – Sat 12:00 AM",
+                "Sat 2:00 AM – Sat 2:00 PM",
+                "Sat 10:00 PM – Sun 6:00 PM",
+                "Mon 9:00 AM – Mon 7:00 PM",
+                "Tue 10:00 AM – Wed 2:00 PM",
+                "Wed 8:00 PM – Thu 8:00 AM",
+                "Thu 12:00 PM – Thu 6:00 PM",
+                "Thu 8:00 PM – Fri 2:00 PM"
+            ]
+        },
+        'aurora': {
+            goalHours: 8,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (17/24)*100}, {type: 'fasting', pct: (7/24)*100} ],
+                [ {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (8/24)*100} ],
+                [ {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (8/24)*100} ],
+                [ {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (8/24)*100} ],
+                [ {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (14/24)*100} ],
+                [ {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (4/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (16/24)*100} ]
+            ],
+            periods: [
+                "Fri 5:00 PM – Sat 12:00 AM",
+                "Sat 8:00 AM – Sat 4:00 PM",
+                "Sun 8:00 AM – Sun 4:00 PM",
+                "Mon 8:00 AM – Mon 4:00 PM",
+                "Tue 12:00 AM – Tue 10:00 AM",
+                "Wed 8:00 AM – Wed 4:00 PM",
+                "Wed 8:00 PM – Thu 12:00 PM",
+                "Thu 8:00 PM – Fri 8:00 AM"
+            ]
+        },
+        'mega-week': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (12/24)*100} ],
+                [ {type: 'fasting', pct: 100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (6/24)*100}, {type: 'fasting', pct: (8/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (14/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (14/24)*100} ]
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 12:00 PM",
+                "Sat 8:00 PM – Sun 12:00 PM",
+                "Mon 12:00 AM – Tue 12:00 PM",
+                "Tue 8:00 PM – Wed 10:00 AM",
+                "Wed 4:00 PM – Thu 6:00 AM",
+                "Thu 8:00 PM – Fri 10:00 AM"
             ]
         }
     };
@@ -179,11 +444,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof planIdOrHours === 'string' && CUSTOM_SCHEDULES[planIdOrHours]) {
             // Custom Schedule Logic
             const custom = CUSTOM_SCHEDULES[planIdOrHours];
+            const customLabels = custom.labels || days;
             
             // Render Custom Chart
             custom.days.forEach((dayData, index) => {
                 let barHTML = '';
-                if (dayData.fast1Pct !== undefined) {
+                if (Array.isArray(dayData)) {
+                    dayData.forEach(segment => {
+                        barHTML += `<div class="bar-segment ${segment.type}" style="height: ${segment.pct}%;"></div>`;
+                    });
+                } else if (dayData.eat1Pct !== undefined) {
+                    barHTML = `<div class="bar-segment eating" style="height: ${dayData.eat1Pct}%;"></div>` +
+                              `<div class="bar-segment fasting" style="height: ${dayData.fastPct}%;"></div>` +
+                              `<div class="bar-segment eating" style="height: ${dayData.eat2Pct}%;"></div>`;
+                } else if (dayData.fast1Pct !== undefined) {
                     barHTML = `<div class="bar-segment fasting" style="height: ${dayData.fast1Pct}%;"></div>` +
                               `<div class="bar-segment eating" style="height: ${dayData.eatPct}%;"></div>` +
                               `<div class="bar-segment fasting" style="height: ${dayData.fast2Pct}%;"></div>`;
@@ -191,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     barHTML = `<div class="bar-segment eating" style="height: ${dayData.eatPct}%;"></div>` +
                               `<div class="bar-segment fasting" style="height: ${dayData.fastPct}%;"></div>`;
                 }
-                chartHTML += `<div class="day-col"><div class="bar-wrapper">${barHTML}</div><span class="x-label">${days[index]}</span></div>`;
+                chartHTML += `<div class="day-col"><div class="bar-wrapper">${barHTML}</div><span class="x-label">${customLabels[index]}</span></div>`;
             });
             
             // Render Custom Schedule
