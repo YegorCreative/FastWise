@@ -64,10 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
         
         updateDisplay(0); // initial tick
         
+        // Show the stages bar
+        const stagesBarEl = document.getElementById('stages-bar');
+        if (stagesBarEl) stagesBarEl.style.display = 'block';
+
         timerInterval = setInterval(() => {
             const now = Date.now();
             const elapsed = now - startTime;
             updateDisplay(elapsed);
+            updateStagesFromElapsed(elapsed);
         }, 1000);
     }
 
@@ -75,6 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isFasting) return;
         clearInterval(timerInterval);
         isFasting = false;
+        
+        // Hide the stages bar
+        const stagesBarEl = document.getElementById('stages-bar');
+        if (stagesBarEl) stagesBarEl.style.display = 'none';
         
         // Update UI
         toggleBtn.style.display = 'none'; // Hide the button
@@ -1346,5 +1355,193 @@ document.addEventListener('DOMContentLoaded', () => {
             kbArticleView.classList.add('active');
         });
     });
+
+    // ===== Fasting Stages =====
+    const FASTING_STAGES = [
+        {
+            id: 0,
+            label: 'Fasting has started',
+            sublabel: 'Started now',
+            triggerHours: 0,
+            bodyStage: '0',
+            icon: `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+            title: 'Start of the fast',
+            subtitle: 'You feel fairly normal during the first few hours. Your body is busy digesting.',
+            bullets: [
+                'The absorbed nutrients are broken down into their components and enter the blood via the small intestine.',
+                'If your previous meal was high in carbohydrates, you may feel a little worn out.',
+                'Carbohydrates are converted into sugar molecules (glucose) and cause blood sugar levels to rise.',
+                'The pancreas secretes the hormone insulin to lower blood sugar levels. Insulin levels rise.'
+            ]
+        },
+        {
+            id: 1,
+            label: 'Insulin levels',
+            sublabel: 'drop after 4 h',
+            triggerHours: 4,
+            bodyStage: '1',
+            icon: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v6m0 0c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z"/></svg>`,
+            title: 'Insulin levels',
+            subtitle: 'After insulin levels rise, they fall again. You may feel hungry.',
+            bullets: [
+                'A large glass of water often helps with these hunger pangs. After a short time it will subside on its own.',
+                'Insulin initially transports glucose to the muscles and liver as a quick source of energy, where it is stored as glycogen.',
+                'Insulin also regulates fat metabolism: It favors the formation of body fat and suppresses fat burning.'
+            ]
+        },
+        {
+            id: 2,
+            label: 'Blood sugar',
+            sublabel: 'normalizes after 8 h',
+            triggerHours: 8,
+            bodyStage: '2',
+            icon: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M12 8v4l3 3"/></svg>`,
+            title: 'Blood sugar',
+            subtitle: 'Blood sugar levels return to normal. The body slowly calms down.',
+            bullets: [
+                'The body uses glycogen stores to produce glucose and meet its energy needs.',
+                'The digestive organs get a break.',
+                'If the stores are empty, the body changes its metabolism: The next phase can begin.'
+            ]
+        },
+        {
+            id: 3,
+            label: 'Fat burning',
+            sublabel: 'starts after 10 h',
+            triggerHours: 10,
+            bodyStage: '3',
+            icon: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`,
+            title: 'Fat burning',
+            subtitle: 'Your body begins to draw on energy from its fat stores. You have more energy again. You can support your body with gentle exercise.',
+            bullets: [
+                'When the body has used up the glucose from its stores, it changes its metabolism.',
+                'It also releases various hormones such as testosterone and adrenaline to burn body fat from its depots.',
+                'Growth hormones are increasingly released and prevent you from losing muscle while fasting.'
+            ]
+        },
+        {
+            id: 4,
+            label: 'Ketosis',
+            sublabel: 'begins after 12 h',
+            triggerHours: 12,
+            bodyStage: '4',
+            icon: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+            title: 'Ketosis',
+            subtitle: 'The body switches to the metabolic state of ketosis. Your ability to concentrate increases. You feel more alert.',
+            bullets: [
+                'The body produces more ketones.',
+                'Ketones are fatty acid molecules that the body uses as a source of energy instead of glucose.',
+                'Ketones are especially important for the brain: They provide energy, promote the repair of brain cells, and prevent diseases.'
+            ]
+        },
+        {
+            id: 5,
+            label: 'Autophagy',
+            sublabel: 'begins after 14 h',
+            triggerHours: 14,
+            bodyStage: '5',
+            icon: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"/></svg>`,
+            title: 'Autophagy',
+            subtitle: 'The body begins to regenerate itself. The efficiency of your cells increases. Your immune system is strengthened and aging processes are slowed down.',
+            bullets: [
+                'Autophagy is a kind of endogenous garbage disposal and natural recycling system.',
+                'Damaged cells are converted into energy and disposed of and new cells are formed.',
+                'The longer the fasting period, the stronger its effects.'
+            ]
+        }
+    ];
+
+    const stagesView = document.getElementById('fasting-stages-view');
+    const openStagesBtn = document.getElementById('open-fasting-stages-btn');
+    const closeStagesBtn = document.getElementById('close-fasting-stages-btn');
+    const stagesTimeline = document.getElementById('stages-timeline');
+    const stagesDetailTitle = document.getElementById('stages-detail-title');
+    const stagesDetailSubtitle = document.getElementById('stages-detail-subtitle');
+    const stagesDetailList = document.getElementById('stages-detail-list');
+    const stagesBodySvg = document.getElementById('stages-body-svg');
+    const stagesBar = document.getElementById('stages-bar');
+    const stagesBarText = document.getElementById('stages-bar-text');
+
+    // Build the timeline items
+    stagesTimeline.innerHTML = FASTING_STAGES.map(s => `
+        <div class="stage-item" data-stage-id="${s.id}">
+            <div class="stage-icon-wrap">${s.icon}</div>
+            <div class="stage-text">
+                <div class="stage-label">${s.label}</div>
+                <div class="stage-sublabel">${s.sublabel}</div>
+            </div>
+        </div>
+    `).join('');
+
+    // Click on timeline item → jump to that stage's detail
+    stagesTimeline.querySelectorAll('.stage-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const sid = parseInt(item.dataset.stageId);
+            renderStageDetail(sid);
+        });
+    });
+
+    function getActiveStageIndex(elapsedMs) {
+        const hours = elapsedMs / 3600000;
+        let active = 0;
+        for (let i = 0; i < FASTING_STAGES.length; i++) {
+            if (hours >= FASTING_STAGES[i].triggerHours) active = i;
+        }
+        return active;
+    }
+
+    function renderStageDetail(stageIndex) {
+        const s = FASTING_STAGES[stageIndex];
+        // Update body SVG highlight
+        stagesBodySvg.setAttribute('data-stage', s.bodyStage);
+        // Update detail panel
+        stagesDetailTitle.textContent = s.title;
+        stagesDetailSubtitle.textContent = s.subtitle;
+        stagesDetailList.innerHTML = s.bullets.map((b, i) => `
+            <li>
+                <span class="stages-detail-num">${i + 1}</span>
+                <span>${b}</span>
+            </li>
+        `).join('');
+        // Update timeline active state
+        stagesTimeline.querySelectorAll('.stage-item').forEach((item, idx) => {
+            item.classList.remove('active', 'reached');
+            if (idx === stageIndex) item.classList.add('active');
+            else if (idx < stageIndex) item.classList.add('reached');
+        });
+        // Scroll active item into view
+        const activeEl = stagesTimeline.querySelector('.stage-item.active');
+        if (activeEl) activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+
+    function updateStagesFromElapsed(elapsedMs) {
+        if (!isFasting) return;
+        const activeIdx = getActiveStageIndex(elapsedMs);
+        const s = FASTING_STAGES[activeIdx];
+        // Update the stages bar text
+        if (stagesBarText) stagesBarText.textContent = s.label;
+        // If stages view is open, update it live
+        if (stagesView.classList.contains('active')) {
+            renderStageDetail(activeIdx);
+        }
+    }
+
+    if (openStagesBtn) {
+        openStagesBtn.addEventListener('click', () => {
+            const elapsed = isFasting ? (Date.now() - startTime) : 0;
+            const activeIdx = getActiveStageIndex(elapsed);
+            renderStageDetail(activeIdx);
+            stagesView.classList.add('active');
+        });
+    }
+    if (closeStagesBtn) {
+        closeStagesBtn.addEventListener('click', () => {
+            stagesView.classList.remove('active');
+        });
+    }
+
+    // Initialize with stage 0 detail
+    renderStageDetail(0);
 });
+
 
