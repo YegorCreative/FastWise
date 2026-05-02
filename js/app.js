@@ -1509,9 +1509,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (idx === stageIndex) item.classList.add('active');
             else if (idx < stageIndex) item.classList.add('reached');
         });
-        // Scroll active item into view
+        // Scroll active item into view (only when stages view is visible)
         const activeEl = stagesTimeline.querySelector('.stage-item.active');
-        if (activeEl) activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        if (activeEl && stagesView.classList.contains('active')) {
+            activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
     }
 
     function updateStagesFromElapsed(elapsedMs) {
