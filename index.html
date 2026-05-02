@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
     <div id="app-container">
@@ -45,6 +45,16 @@
                     <!-- This button is now hidden by default and acts as End Fasting -->
                     <button class="primary-btn pulse" id="toggle-timer-btn" style="display: none; background: #e74c3c;">End Fasting</button>
                 </div>
+                <!-- Fasting Stages trigger — visible only while fasting -->
+                <div class="stages-bar" id="stages-bar" style="display:none;">
+                    <button class="stages-bar-btn" id="open-fasting-stages-btn">
+                        <span class="stages-bar-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <span id="stages-bar-text">Fasting has started</span>
+                        </span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
             </section>
 
             <!-- Plans Section -->
@@ -70,8 +80,9 @@
                         <div class="plan-desc">Lose weight faster</div>
                     </div>
                 </div>
-                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <div style="display: flex; justify-content: center; margin-top: 20px; gap: 10px;">
                     <button class="outline-btn" id="open-special-plans-btn" style="width: 100%;">Special Plans</button>
+                    <button class="outline-btn" id="open-autophagy-plans-btn" style="width: 100%; border-color: var(--teal); color: var(--teal);">Autophagy Plans</button>
                 </div>
             </section>
 
@@ -168,7 +179,101 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 <span>Me</span>
             </button>
+            <button class="nav-item" id="open-knowledge-base-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span>Help</span>
+            </button>
         </nav>
+
+        <!-- Knowledge Base View -->
+        <div id="knowledge-base-view" class="slide-view" style="z-index: 300;">
+            <div class="editor-header">
+                <button class="icon-button back-btn" id="close-knowledge-base-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <h2 class="editor-title" style="flex: 1; text-align: center;">Knowledge Base</h2>
+                <div style="width: 44px;"></div>
+            </div>
+
+            <div class="plan-detail-content" style="padding: 0; overflow-y: auto;">
+                <div style="padding: 16px 20px; background: linear-gradient(135deg, var(--teal), #00a896); border-radius: 0 0 20px 20px; margin-bottom: 8px;">
+                    <p style="color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;">Your quick help for tough times</p>
+                    <h3 style="color: #fff; margin: 4px 0 0; font-size: 1.1rem;">Fasting Knowledge Base</h3>
+                </div>
+
+                <div class="kb-list">
+                    <button class="kb-item" data-article="intermittent">
+                        <div class="kb-icon" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">🕐</div>
+                        <span class="kb-title">The intermittent fasting method</span>
+                        <svg class="kb-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                    <button class="kb-item" data-article="first-week">
+                        <div class="kb-icon" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">📅</div>
+                        <span class="kb-title">Your first fasting week</span>
+                        <svg class="kb-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                    <button class="kb-item" data-article="during">
+                        <div class="kb-icon" style="background: linear-gradient(135deg, #ffd89b, #19547b);">☕</div>
+                        <span class="kb-title">During the fasting period</span>
+                        <svg class="kb-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                    <button class="kb-item" data-article="nutrition">
+                        <div class="kb-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">🥗</div>
+                        <span class="kb-title">Nutrition</span>
+                        <svg class="kb-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                    <button class="kb-item" data-article="problems">
+                        <div class="kb-icon" style="background: linear-gradient(135deg, #a1c4fd, #c2e9fb);">🩺</div>
+                        <span class="kb-title">Problems while fasting</span>
+                        <svg class="kb-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                    <button class="kb-item" data-article="health">
+                        <div class="kb-icon" style="background: linear-gradient(135deg, #84fab0, #8fd3f4);">💚</div>
+                        <span class="kb-title">Health</span>
+                        <svg class="kb-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                    <button class="kb-item" data-article="features">
+                        <div class="kb-icon" style="background: linear-gradient(135deg, #f6d365, #fda085);">⭐</div>
+                        <span class="kb-title">App features</span>
+                        <svg class="kb-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                    <button class="kb-item" data-article="coach">
+                        <div class="kb-icon" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">🏆</div>
+                        <span class="kb-title">The Coach</span>
+                        <svg class="kb-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Knowledge Base Article View -->
+        <div id="kb-article-view" class="slide-view" style="z-index: 310; overflow-y: auto;">
+            <div id="kb-article-hero" class="kb-hero">
+                <button class="icon-button kb-hero-back" id="close-kb-article-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <div class="kb-hero-emoji" id="kb-article-hero-emoji">🕐</div>
+            </div>
+            <div class="kb-article-title-section">
+                <h2 id="kb-article-title">Article</h2>
+            </div>
+            <div class="kb-list" id="kb-questions-list" style="padding-bottom: 40px;">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <!-- Knowledge Base Sub-question View -->
+        <div id="kb-question-view" class="slide-view" style="z-index: 320;">
+            <div class="editor-header">
+                <button class="icon-button back-btn" id="close-kb-question-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <h2 class="editor-title" id="kb-question-title" style="flex: 1; text-align: center; font-size: 15px;"></h2>
+                <div style="width: 44px;"></div>
+            </div>
+            <div class="plan-detail-content" style="padding: 20px; overflow-y: auto;" id="kb-question-body"></div>
+        </div>
+
         <!-- Plan Detail View (Hidden by default) -->
         <div id="plan-detail-view" class="slide-view" style="z-index: 220;">
             <div class="slide-header">
@@ -255,6 +360,111 @@
             </div>
         </div>
 
+        <!-- Autophagy Plans View -->
+        <div id="autophagy-plans-view" class="slide-view">
+            <div class="editor-header">
+                <button class="icon-button back-btn" id="close-autophagy-plans-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <h2 class="editor-title" style="flex: 1; text-align: center;">Autophagy Plans</h2>
+                <div style="width: 44px;"></div> <!-- Spacer -->
+            </div>
+            
+            <div class="plan-detail-content" style="padding: 20px; overflow-y: auto;">
+                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 16px; line-height: 1.5;">Plans that focus on health, cell repair and detoxification. Autophagy is activated during extended fasting periods.</p>
+                <div class="plans-grid">
+                    <div class="plan-card glass" data-hours="17" data-long-desc="17 hours is considered the threshold where autophagy begins to activate, helping your cells repair and renew.">
+                        <div class="plan-title">17-7 Autophagy</div>
+                        <div class="plan-desc">Begin autophagy</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="18" data-long-desc="18 hours of fasting deepens the autophagy process, promoting more significant cellular cleanup.">
+                        <div class="plan-title">18-6 Deep Clean</div>
+                        <div class="plan-desc">Deeper cell repair</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="20" data-long-desc="A powerful 20-hour fast to maximize autophagy and enter deep fat burning mode.">
+                        <div class="plan-title">20-4 Cell Reset</div>
+                        <div class="plan-desc">Maximum autophagy</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="23" data-long-desc="One Meal A Day keeps your body in a prolonged autophagy state for most of the day, maximizing cellular regeneration.">
+                        <div class="plan-title">OMAD Autophagy</div>
+                        <div class="plan-desc">All-day cell repair</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="24" data-long-desc="A full 24-hour fast triggers deep autophagy and allows your body to fully focus on healing and immune support.">
+                        <div class="plan-title">24h Fast</div>
+                        <div class="plan-desc">Deep autophagy reset</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="36" data-long-desc="The Monk Fast — 36 hours of fasting for profound cellular cleansing, immune system reset, and peak autophagy.">
+                        <div class="plan-title">Monk Fast 36h</div>
+                        <div class="plan-desc">Peak cellular cleansing</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="48" data-long-desc="A two-day fast for extreme autophagy, immune regeneration, and deep metabolic reset. For experienced fasters only.">
+                        <div class="plan-title">48h Fast</div>
+                        <div class="plan-desc">Extreme regeneration</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="3-days-immune-system-cure" data-long-desc="Studies show, that a three day fast can have a positive effect on the immune system. Be careful! Please speak with your doctor if you're not healthy or if you don't feel well. Only take a light meal after your fasting cure.">
+                        <div class="plan-title">3 Days Immune Cure</div>
+                        <div class="plan-desc">Reset your immune system</div>
+                    </div>
+                    <div class="plan-card glass" data-hours="72" data-long-desc="72 hours of fasting triggers stem cell regeneration and deep immune system reset. Medical supervision strongly advised.">
+                        <div class="plan-title">72h Fast</div>
+                        <div class="plan-desc">Stem cell regeneration</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="easy-fasting" data-long-desc='A variation of our popular "Easy Fasting" series. Suitable for beginners, yet effective.'>
+                        <div class="plan-title">Easy Fasting</div>
+                        <div class="plan-desc">Fast easy, but effective</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="autophagy-week" data-long-desc="This week with its 36 hours fasting period is all about the autophagy / cell repair effect of intermittent fasting. Give your intestines a time off and benefit from the positive effects!">
+                        <div class="plan-title">Autophagy Week</div>
+                        <div class="plan-desc">Time off for your intestines</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="easy-fasting-2" data-long-desc='A variation of our popular "Easy Fasting" series. Suitable for beginners, yet effective.'>
+                        <div class="plan-title">Easy Fasting II</div>
+                        <div class="plan-desc">Fast easy, but effective</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="easy-fasting-3" data-long-desc='A variation of our popular "Easy Fasting" series. Suitable for beginners, yet effective.'>
+                        <div class="plan-title">Easy Fasting III</div>
+                        <div class="plan-desc">Fast easy, but effective</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="easy-fasting-4" data-long-desc='A variation of our popular "Easy Fasting" series. Suitable for beginners, yet effective.'>
+                        <div class="plan-title">Easy Fasting IV</div>
+                        <div class="plan-desc">Fast easy, but effective</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="autophagy-week-2" data-long-desc="This week with its 48 hours fasting period is all about the autophagy / cell repair effect of intermittent fasting. Give your intestines a time off and benefit from the positive effects!">
+                        <div class="plan-title">Autophagy Week II</div>
+                        <div class="plan-desc">Time off for your intestines</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="relaxed-fasting" data-long-desc="An easy and relax fasting week after which you'll feel relaxed and well. So something good for your body!">
+                        <div class="plan-title">Relaxed Fasting</div>
+                        <div class="plan-desc">Light and relaxed fasting</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="relaxed-fasting-2" data-long-desc="An easy and relax fasting week after which you'll feel relaxed and well. So something good for your body!">
+                        <div class="plan-title">Relaxed Fasting II</div>
+                        <div class="plan-desc">Light and relaxed fasting</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="relaxed-fasting-3" data-long-desc="An easy and relax fasting week after which you'll feel relaxed and well. So something good for your body!">
+                        <div class="plan-title">Relaxed Fasting III</div>
+                        <div class="plan-desc">Light and relaxed fasting</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="relaxed-fasting-4" data-long-desc="An easy and relax fasting week after which you'll feel relaxed and well. So something good for your body!">
+                        <div class="plan-title">Relaxed Fasting IV</div>
+                        <div class="plan-desc">Light and relaxed fasting</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="resilience-booster" data-long-desc="A week which is rich in variety to strengthen the resilience of your organism.">
+                        <div class="plan-title">Resilience Booster</div>
+                        <div class="plan-desc">Strengthen your defenses</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="resilience-booster-2" data-long-desc="A week which is rich in variety to strengthen the resilience of your organism.">
+                        <div class="plan-title">Resilience Booster II</div>
+                        <div class="plan-desc">Strengthen your defenses</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="resilience-booster-3" data-long-desc="A week which is rich in variety to strengthen the resilience of your organism.">
+                        <div class="plan-title">Resilience Booster III</div>
+                        <div class="plan-desc">Strengthen your defenses</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Special Plans View -->
         <div id="special-plans-view" class="slide-view">
             <div class="editor-header">
@@ -275,6 +485,82 @@
                     <div class="plan-card glass" data-plan-id="power-week-2" data-long-desc="You want to lose weight fast? Try the power week. But it's not for inexperienced beginners!">
                         <div class="plan-title">Power Week II</div>
                         <div class="plan-desc">Lose weight faster</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="ice-dive" data-long-desc="This week begins with longer fasting periods and then gets easier. Try it! Variation makes your body and organism more flexible.">
+                        <div class="plan-title">Ice Dive</div>
+                        <div class="plan-desc">Hard Beginning, relaxed ending</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="fast-in-peace" data-long-desc="Combine a light 14-10 at the beginning of the week with a long fasting period at the weekend with brunch on the seventh day.">
+                        <div class="plan-title">Weekend Faster</div>
+                        <div class="plan-desc">Fast in peace</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="weekend-faster-2" data-long-desc="Combine a light 14-10 at the beginning of the week with a brunch on the sixth day and a long fasting period until the weekend.">
+                        <div class="plan-title">Weekend Faster II</div>
+                        <div class="plan-desc">Fast in peace</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="feel-good" data-long-desc="An easy fasting experience which will give your body a time-out for 3 times.">
+                        <div class="plan-title">Feel Good!</div>
+                        <div class="plan-desc">3x18 hours of fasting</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="joy-in-the-evening" data-long-desc="Alternating fasting in the morning and at lunchtime">
+                        <div class="plan-title">Joy in the Evening</div>
+                        <div class="plan-desc">Alternating fasting</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="dynamic-duo-breakfast" data-long-desc="An effective combination of 16-8 and 5:2 which surely will have a fast and positive outcome.">
+                        <div class="plan-title">Dynamic Duo (Breakfast)</div>
+                        <div class="plan-desc">Alternating breakfast / full day fasting</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="dynamic-duo-dinner" data-long-desc="An effective combination of 16-8 and 5:2 which surely will have a fast and positive outcome.">
+                        <div class="plan-title">Dynamic Duo (Dinner)</div>
+                        <div class="plan-desc">Alternating dinner / full day fasting</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="dynamic-duo-plus" data-long-desc="A strict and demanding combination of the popular 16-8 and 5-2 methods, with two 40 hour long fasting periods.">
+                        <div class="plan-title">Dynamic Duo Plus</div>
+                        <div class="plan-desc">Strict combination of 16-8 and 5-2</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="spring-fasting" data-long-desc="Success guaranteed. A plan for the nicest of seasons">
+                        <div class="plan-title">Spring Fasting</div>
+                        <div class="plan-desc">Success guaranteed</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="stone-age" data-long-desc="The longest period of history, humankind didn't have steady access to food. This week takes you back to our genetic origin.">
+                        <div class="plan-title">Stone Age</div>
+                        <div class="plan-desc">Primeval fasting</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="aurora" data-long-desc="A strengthening plan with much variety which challenges your body">
+                        <div class="plan-title">Aurora</div>
+                        <div class="plan-desc">A strengthening plan</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="mega-week" data-long-desc="A plan for experienced BodyFasters, a 36-hour fast included">
+                        <div class="plan-title">Mega Week</div>
+                        <div class="plan-desc">A plan for experienced BodyFasters</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="mega-week-2" data-long-desc="An evening variation with partial fasting and one 24-hour fast">
+                        <div class="plan-title">Mega Week II</div>
+                        <div class="plan-desc">An evening variation</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="brutal" data-long-desc="This week dares you: You will fast for three whole days and skip lunch 3 times.">
+                        <div class="plan-title">Brutal</div>
+                        <div class="plan-desc">Three days of fasting and more</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="job-for-experts" data-long-desc="This effective week is not for inexperienced beginners! You will fast 2x longer than 24 hours.">
+                        <div class="plan-title">Job for Experts</div>
+                        <div class="plan-desc">A challenge for the experienced</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="ice-dive-2" data-long-desc="This week begins with longer fasting periods and then gets easier. Try it! Variation makes your body and organism more flexible.">
+                        <div class="plan-title">Ice Dive II</div>
+                        <div class="plan-desc">Hard Beginning, relaxed ending</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="ice-dive-3" data-long-desc="This week begins with longer fasting periods and then gets easier. Try it! Variation makes your body and organism more flexible.">
+                        <div class="plan-title">Ice Dive III</div>
+                        <div class="plan-desc">Hard Beginning, relaxed ending</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="3-days-immune-system-cure" data-long-desc="Studies show, that a three day fast can have a positive effect on the immune system. Be careful! Please speak with your doctor if you're not healthy or if you don't feel well. Only take a light meal after your fasting cure.">
+                        <div class="plan-title">3 Days Immune System Cure</div>
+                        <div class="plan-desc">Reset your immune system</div>
+                    </div>
+                    <div class="plan-card glass" data-plan-id="week-break" data-long-desc="Are you on vacation next week? Or are you planning a family celebration? Sometimes there are reasons for a week without fasting. Stay on the ball anyway, keep your progress with this plan and continue with the challenges.">
+                        <div class="plan-title">Take a Week Break</div>
+                        <div class="plan-desc">If you do not have time or need a break</div>
                     </div>
                     <div class="plan-card glass" data-hours="12" data-long-desc="A gentle start for beginners.">
                         <div class="plan-title">12-12</div>
@@ -368,7 +654,93 @@
             </div>
         </div>
 
+        <!-- Fasting Stages View -->
+        <div id="fasting-stages-view" class="slide-view stages-view" style="z-index: 260;">
+            <div class="stages-header">
+                <div style="width: 40px;"></div>
+                <h2 class="stages-title">Fasting stages</h2>
+                <button class="stages-close-btn" id="close-fasting-stages-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div class="stages-top">
+                <!-- Timeline -->
+                <div class="stages-timeline" id="stages-timeline">
+                    <!-- Populated by JS -->
+                </div>
+                <!-- Body illustration -->
+                <div class="stages-body-wrap">
+                    <svg class="stages-body-svg" id="stages-body-svg" viewBox="0 0 160 300" xmlns="http://www.w3.org/2000/svg" data-stage="0">
+                        <!-- Body outline -->
+                        <ellipse cx="80" cy="28" rx="24" ry="26" fill="#ede8e0" stroke="#c4a882" stroke-width="1.5"/>
+                        <rect x="71" y="52" width="18" height="16" rx="3" fill="#ede8e0" stroke="#c4a882" stroke-width="1.5"/>
+                        <path d="M28,68 Q16,76 14,96 L18,244 Q18,252 28,254 L132,254 Q142,252 142,244 L146,96 Q144,76 132,68 Q110,60 80,60 Q50,60 28,68Z" fill="#ede8e0" stroke="#c4a882" stroke-width="1.5"/>
+                        <!-- Arms -->
+                        <path d="M14,96 Q6,112 4,148 L14,178 Q17,183 23,180 L28,140 L22,96Z" fill="#ede8e0" stroke="#c4a882" stroke-width="1.5"/>
+                        <path d="M146,96 Q154,112 156,148 L146,178 Q143,183 137,180 L132,140 L138,96Z" fill="#ede8e0" stroke="#c4a882" stroke-width="1.5"/>
+
+                        <!-- BRAIN -->
+                        <g class="organ-brain">
+                            <ellipse cx="80" cy="23" rx="16" ry="17" fill="#c084fc"/>
+                            <path d="M68,19 Q74,13 80,19 Q86,13 92,19" fill="none" stroke="#9333ea" stroke-width="1.5"/>
+                            <path d="M66,25 Q72,20 78,25 Q83,20 89,25 Q94,20 98,25" fill="none" stroke="#9333ea" stroke-width="1.5" opacity="0.8"/>
+                        </g>
+
+                        <!-- LUNGS -->
+                        <g class="organ-lungs">
+                            <path d="M44,82 Q32,88 29,116 Q27,132 36,144 Q48,152 55,138 L57,86Z" fill="#fca5a5"/>
+                            <path d="M116,82 Q128,88 131,116 Q133,132 124,144 Q112,152 105,138 L103,86Z" fill="#fca5a5"/>
+                        </g>
+
+                        <!-- HEART -->
+                        <g class="organ-heart">
+                            <path d="M72,96 Q64,85 56,93 Q49,101 58,112 L80,130 L102,112 Q111,101 104,93 Q96,85 88,96 Q84,89 80,96 Q76,89 72,96Z" fill="#f87171"/>
+                        </g>
+
+                        <!-- LIVER -->
+                        <g class="organ-liver">
+                            <path d="M84,136 Q104,132 116,140 Q124,150 122,164 Q118,175 104,176 Q88,176 80,164 Q74,155 77,143Z" fill="#d97706"/>
+                        </g>
+
+                        <!-- STOMACH -->
+                        <g class="organ-stomach">
+                            <path d="M60,146 Q51,149 48,162 Q46,174 52,181 Q60,187 72,184 Q82,180 84,169 Q86,157 78,148Z" fill="#34d399"/>
+                        </g>
+
+                        <!-- PANCREAS -->
+                        <g class="organ-pancreas">
+                            <path d="M64,162 Q80,157 94,162 Q100,166 97,172 Q93,177 80,176 Q64,175 61,169Z" fill="#a78bfa"/>
+                        </g>
+
+                        <!-- INTESTINES -->
+                        <g class="organ-intestine">
+                            <path d="M36,186 Q33,202 34,218 Q36,230 46,234 Q62,238 80,236 Q98,238 114,234 Q124,230 126,218 Q127,202 124,186 Q120,178 112,181 L106,216 Q102,227 80,227 Q58,227 54,216 L48,181 Q40,178 36,186Z" fill="#6ee7b7"/>
+                            <path d="M54,186 Q62,196 70,188 Q79,181 88,191 Q94,200 86,209 Q78,217 69,211 Q60,206 58,217 Q57,222 66,224 Q80,226 94,222 Q103,217 101,209 Q99,200 108,194 Q114,186 108,180" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+                        </g>
+
+                        <!-- FAT deposits -->
+                        <g class="organ-fat">
+                            <ellipse cx="22" cy="168" rx="10" ry="28" fill="#fbbf24"/>
+                            <ellipse cx="138" cy="168" rx="10" ry="28" fill="#fbbf24"/>
+                            <ellipse cx="44" cy="232" rx="14" ry="15" fill="#fbbf24"/>
+                            <ellipse cx="116" cy="232" rx="14" ry="15" fill="#fbbf24"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Stage detail panel -->
+            <div class="stages-detail" id="stages-detail">
+                <h3 class="stages-detail-title" id="stages-detail-title">Start of the fast</h3>
+                <p class="stages-detail-subtitle" id="stages-detail-subtitle">You feel fairly normal during the first few hours. Your body is busy digesting.</p>
+                <ol class="stages-detail-list" id="stages-detail-list">
+                    <!-- Populated by JS -->
+                </ol>
+            </div>
+        </div>
+
     </div>
-    <script src="js/app.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
