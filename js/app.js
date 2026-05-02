@@ -433,6 +433,415 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Wed 4:00 PM – Thu 6:00 AM",
                 "Thu 8:00 PM – Fri 10:00 AM"
             ]
+        },
+        'mega-week-2': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (14/24)*100}, {type: 'fasting', pct: (10/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (18/24)*100} ],
+                [ {type: 'fasting', pct: 100} ],
+                [ {type: 'eating', pct: (14/24)*100}, {type: 'fasting', pct: (10/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (10/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (10/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (10/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (18/24)*100} ]
+            ],
+            periods: [
+                "Fri 2:00 PM – Sat 6:00 AM",
+                "Sun 12:00 AM – Mon 12:00 AM",
+                "Mon 2:00 PM – Tue 6:00 AM",
+                "Tue 2:00 PM – Wed 6:00 AM",
+                "Wed 2:00 PM – Thu 6:00 AM",
+                "Thu 2:00 PM – Fri 6:00 AM"
+            ]
+        },
+        'brutal': {
+            goalHours: 24,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: 100} ],
+                [ {type: 'eating', pct: (10/24)*100}, {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (6/24)*100} ],
+                [ {type: 'fasting', pct: 100} ],
+                [ {type: 'eating', pct: (10/24)*100}, {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (6/24)*100} ],
+                [ {type: 'fasting', pct: 100} ],
+                [ {type: 'eating', pct: (10/24)*100}, {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (6/24)*100} ],
+                [ {type: 'eating', pct: 100} ]
+            ],
+            periods: [
+                "Fri 8:00 PM – Sun 12:00 AM",
+                "Sun 10:00 AM – Sun 6:00 PM",
+                "Mon 12:00 AM – Tue 12:00 AM",
+                "Tue 10:00 AM – Tue 6:00 PM",
+                "Wed 12:00 AM – Thu 12:00 AM",
+                "Thu 10:00 AM – Thu 6:00 PM"
+            ]
+        },
+        'job-for-experts': {
+            goalHours: 24,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'fasting', pct: 100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (18/24)*100} ],
+                [ {type: 'eating', pct: (17/24)*100}, {type: 'fasting', pct: (7/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (12/24)*100} ],
+                [ {type: 'fasting', pct: 100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (11/24)*100}, {type: 'fasting', pct: (7/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (12/24)*100} ]
+            ],
+            periods: [
+                "Sat 12:00 AM – Sun 6:00 AM",
+                "Mon 5:00 PM – Tue 12:00 PM",
+                "Wed 12:00 AM – Thu 6:00 AM",
+                "Thu 5:00 PM – Fri 12:00 PM"
+            ]
+        },
+        'ice-dive-2': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (15/24)*100}, {type: 'fasting', pct: (9/24)*100} ],
+                [ {type: 'fasting', pct: (16/24)*100}, {type: 'eating', pct: (4/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (6/24)*100}, {type: 'fasting', pct: (12/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (5/24)*100}, {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (5/24)*100} ],
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (9/24)*100}, {type: 'eating', pct: (15/24)*100} ]
+            ],
+            periods: [
+                "Fri 3:00 PM – Sat 4:00 PM",
+                "Sat 8:00 PM – Sun 6:00 AM",
+                "Sun 12:00 PM – Mon 12:00 PM",
+                "Mon 8:00 PM – Tue 12:00 PM",
+                "Tue 8:00 PM – Wed 6:00 AM",
+                "Wed 11:00 AM – Wed 7:00 PM",
+                "Thu 8:00 PM – Fri 9:00 AM"
+            ]
+        },
+        'ice-dive-3': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (16/24)*100}, {type: 'fasting', pct: (8/24)*100} ],
+                [ {type: 'fasting', pct: (14/24)*100}, {type: 'eating', pct: (6/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (7/24)*100}, {type: 'fasting', pct: (7/24)*100} ],
+                [ {type: 'fasting', pct: (11/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (5/24)*100} ],
+                [ {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (11/24)*100}, {type: 'fasting', pct: (3/24)*100} ],
+                [ {type: 'fasting', pct: (9/24)*100}, {type: 'eating', pct: (13/24)*100}, {type: 'fasting', pct: (2/24)*100} ],
+                [ {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (14/24)*100} ],
+                [ {type: 'eating', pct: 100} ]
+            ],
+            periods: [
+                "Fri 4:00 PM – Sat 2:00 PM",
+                "Sat 8:00 PM – Sun 10:00 AM",
+                "Sun 5:00 PM – Mon 11:00 AM",
+                "Mon 7:00 PM – Tue 10:00 AM",
+                "Tue 9:00 PM – Wed 9:00 AM",
+                "Wed 10:00 PM – Thu 10:00 AM"
+            ]
+        },
+        '3-days-immune-system-cure': {
+            goalHours: 72,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: (18/24)*100}, {type: 'fasting', pct: (6/24)*100} ],
+                [ {type: 'fasting', pct: 100} ],
+                [ {type: 'fasting', pct: 100} ],
+                [ {type: 'fasting', pct: (18/24)*100}, {type: 'eating', pct: (6/24)*100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ]
+            ],
+            periods: [
+                "Sun 6:00 PM – Wed 6:00 PM"
+            ]
+        },
+        'week-break': {
+            goalHours: 0,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ]
+            ],
+            periods: []
+        },
+        'easy-fasting': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (12/24)*100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: (7/24)*100}, {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (7/24)*100} ],
+                [ {type: 'eating', pct: (18/24)*100}, {type: 'fasting', pct: (6/24)*100} ],
+                [ {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (14/24)*100} ],
+                [ {type: 'eating', pct: 100} ]
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 12:00 PM",
+                "Sat 8:00 PM – Sun 12:00 PM",
+                "Tue 7:00 AM – Tue 5:00 PM",
+                "Wed 6:00 PM – Thu 10:00 AM"
+            ]
+        },
+        'autophagy-week': {
+            goalHours: 36,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: 100} ],
+                [ {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (16/24)*100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ]
+            ],
+            periods: [
+                "Sun 8:00 PM – Tue 8:00 AM"
+            ]
+        },
+        'easy-fasting-2': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (12/24)*100} ],
+                [ {type: 'eating', pct: (7/24)*100}, {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (7/24)*100} ],
+                [ {type: 'eating', pct: (7/24)*100}, {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (7/24)*100} ],
+                [ {type: 'eating', pct: (7/24)*100}, {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (7/24)*100} ],
+                [ {type: 'eating', pct: (7/24)*100}, {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (7/24)*100} ],
+                [ {type: 'eating', pct: 100} ]
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 12:00 PM",
+                "Sat 8:00 PM – Sun 12:00 PM",
+                "Mon 7:00 AM – Mon 5:00 PM",
+                "Tue 7:00 AM – Tue 5:00 PM",
+                "Wed 7:00 AM – Wed 5:00 PM",
+                "Thu 7:00 AM – Thu 5:00 PM"
+            ]
+        },
+        'easy-fasting-3': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (18/24)*100}, {type: 'fasting', pct: (6/24)*100} ],
+                [ {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (6/24)*100}, {type: 'fasting', pct: (10/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (18/24)*100} ],
+                [ {type: 'eating', pct: (7/24)*100}, {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (7/24)*100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: (14/24)*100}, {type: 'fasting', pct: (10/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (10/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (18/24)*100} ]
+            ],
+            periods: [
+                "Fri 6:00 PM – Sat 8:00 AM",
+                "Sat 2:00 PM – Sun 6:00 AM",
+                "Mon 7:00 AM – Mon 5:00 PM",
+                "Wed 2:00 PM – Thu 6:00 AM",
+                "Thu 2:00 PM – Fri 6:00 AM"
+            ]
+        },
+        'easy-fasting-4': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (8/24)*100} ],
+                [ {type: 'fasting', pct: (18/24)*100}, {type: 'eating', pct: (6/24)*100} ],
+                [ {type: 'eating', pct: (6/24)*100}, {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (12/24)*100} ],
+                [ {type: 'eating', pct: 100} ]
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 12:00 PM",
+                "Sat 8:00 PM – Sun 12:00 PM",
+                "Sun 8:00 PM – Mon 12:00 AM",
+                "Tue 8:00 AM – Tue 4:00 PM",
+                "Wed 12:00 AM – Wed 6:00 PM",
+                "Thu 6:00 AM – Thu 12:00 PM"
+            ]
+        },
+        'autophagy-week-2': {
+            goalHours: 48,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: (18/24)*100}, {type: 'fasting', pct: (6/24)*100} ],
+                [ {type: 'fasting', pct: 100} ],
+                [ {type: 'fasting', pct: (18/24)*100}, {type: 'eating', pct: (6/24)*100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ],
+                [ {type: 'eating', pct: 100} ]
+            ],
+            periods: [
+                "Sun 6:00 PM – Tue 6:00 PM"
+            ]
+        },
+        'relaxed-fasting': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (12/24)*100} ],
+                [ {type: 'eating', pct: (9/24)*100}, {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (5/24)*100} ],
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (12/24)*100} ],
+                [ {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (16/24)*100} ],
+                [ {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (12/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (16/24)*100} ]
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 12:00 PM",
+                "Sun 9:00 AM – Sun 7:00 PM",
+                "Mon 8:00 PM – Tue 12:00 PM",
+                "Wed 8:00 AM – Thu 8:00 AM",
+                "Thu 8:00 PM – Fri 8:00 AM"
+            ]
+        },
+        'relaxed-fasting-2': {
+            goalHours: 16,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (19/24)*100}, {type: 'fasting', pct: (5/24)*100} ],
+                [ {type: 'fasting', pct: (14/24)*100}, {type: 'eating', pct: (10/24)*100} ],
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (12/24)*100} ],
+                [ {type: 'eating', pct: (9/24)*100}, {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (5/24)*100} ],
+                [ {type: 'eating', pct: (18/24)*100}, {type: 'fasting', pct: (6/24)*100} ],
+                [ {type: 'fasting', pct: (14/24)*100}, {type: 'eating', pct: (10/24)*100} ],
+                [ {type: 'eating', pct: 100} ]
+            ],
+            periods: [
+                "Fri 7:00 PM – Sat 2:00 PM",
+                "Sun 8:00 PM – Mon 12:00 PM",
+                "Tue 9:00 AM – Tue 7:00 PM",
+                "Wed 6:00 PM – Thu 2:00 PM"
+            ]
+        },
+        'relaxed-fasting-3': {
+            goalHours: 14,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (10/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (11/24)*100}, {type: 'eating', pct: (13/24)*100} ],
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (11/24)*100}, {type: 'eating', pct: (9/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (14/24)*100}, {type: 'eating', pct: (10/24)*100} ],
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (18/24)*100} ]
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 10:00 AM",
+                "Sat 8:00 PM – Sun 11:00 AM",
+                "Mon 8:00 PM – Tue 11:00 AM",
+                "Tue 8:00 PM – Wed 2:00 PM",
+                "Thu 8:00 PM – Fri 6:00 AM"
+            ]
+        },
+        'relaxed-fasting-4': {
+            goalHours: 14,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (16/24)*100}, {type: 'fasting', pct: (8/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (10/24)*100}, {type: 'fasting', pct: (8/24)*100} ],
+                [ {type: 'fasting', pct: (7/24)*100}, {type: 'eating', pct: (10/24)*100}, {type: 'fasting', pct: (7/24)*100} ],
+                [ {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (16/24)*100} ],
+                [ {type: 'eating', pct: (18/24)*100}, {type: 'fasting', pct: (6/24)*100} ],
+                [ {type: 'fasting', pct: (9/24)*100}, {type: 'eating', pct: (7/24)*100}, {type: 'fasting', pct: (8/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (12/24)*100}, {type: 'fasting', pct: (6/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (18/24)*100} ]
+            ],
+            periods: [
+                "Fri 4:00 PM – Sat 6:00 AM",
+                "Sat 4:00 PM – Sun 7:00 AM",
+                "Sun 5:00 PM – Mon 8:00 AM",
+                "Tue 6:00 PM – Wed 9:00 AM",
+                "Wed 4:00 PM – Thu 6:00 AM",
+                "Thu 4:00 PM – Fri 6:00 AM"
+            ]
+        },
+        'resilience-booster': {
+            goalHours: 22,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (18/24)*100}, {type: 'eating', pct: (2/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (4/24)*100}, {type: 'fasting', pct: (8/24)*100} ],
+                [ {type: 'fasting', pct: (6/24)*100}, {type: 'eating', pct: (14/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (12/24)*100} ],
+                [ {type: 'eating', pct: (12/24)*100}, {type: 'fasting', pct: (12/24)*100} ],
+                [ {type: 'fasting', pct: (10/24)*100}, {type: 'eating', pct: (14/24)*100} ],
+                [ {type: 'eating', pct: 100} ]
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 6:00 PM",
+                "Sat 8:00 PM – Sun 12:00 PM",
+                "Sun 4:00 PM – Mon 6:00 AM",
+                "Mon 8:00 PM – Tue 12:00 PM",
+                "Wed 12:00 PM – Thu 10:00 AM"
+            ]
+        },
+        'resilience-booster-2': {
+            goalHours: 22,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (18/24)*100}, {type: 'fasting', pct: (6/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (4/24)*100}, {type: 'fasting', pct: (8/24)*100} ],
+                [ {type: 'fasting', pct: (16/24)*100}, {type: 'eating', pct: (8/24)*100} ],
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (18/24)*100}, {type: 'eating', pct: (6/24)*100} ],
+                [ {type: 'eating', pct: (12/24)*100}, {type: 'fasting', pct: (12/24)*100} ],
+                [ {type: 'fasting', pct: (11/24)*100}, {type: 'eating', pct: (5/24)*100}, {type: 'fasting', pct: (8/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (12/24)*100} ]
+            ],
+            periods: [
+                "Fri 6:00 PM – Sat 12:00 PM",
+                "Sat 4:00 PM – Sun 4:00 PM",
+                "Mon 8:00 PM – Tue 6:00 PM",
+                "Wed 12:00 PM – Thu 11:00 AM",
+                "Thu 4:00 PM – Fri 12:00 PM"
+            ]
+        },
+        'resilience-booster-3': {
+            goalHours: 20,
+            labels: ['Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'],
+            days: [
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (12/24)*100}, {type: 'eating', pct: (8/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (20/24)*100}, {type: 'eating', pct: (4/24)*100} ],
+                [ {type: 'eating', pct: (4/24)*100}, {type: 'fasting', pct: (4/24)*100}, {type: 'eating', pct: (4/24)*100}, {type: 'fasting', pct: (4/24)*100}, {type: 'eating', pct: (5/24)*100}, {type: 'fasting', pct: (3/24)*100} ],
+                [ {type: 'fasting', pct: (18/24)*100}, {type: 'eating', pct: (6/24)*100} ],
+                [ {type: 'eating', pct: (12/24)*100}, {type: 'fasting', pct: (4/24)*100}, {type: 'eating', pct: (8/24)*100} ],
+                [ {type: 'eating', pct: (20/24)*100}, {type: 'fasting', pct: (4/24)*100} ],
+                [ {type: 'fasting', pct: (8/24)*100}, {type: 'eating', pct: (16/24)*100} ]
+            ],
+            periods: [
+                "Fri 8:00 PM – Sat 12:00 PM",
+                "Sat 8:00 PM – Sun 8:00 PM",
+                "Mon 4:00 AM – Mon 8:00 AM",
+                "Mon 12:00 PM – Mon 4:00 PM",
+                "Mon 9:00 PM – Tue 6:00 PM",
+                "Wed 12:00 PM – Wed 4:00 PM",
+                "Thu 8:00 PM – Fri 8:00 AM"
+            ]
         }
     };
 
@@ -560,6 +969,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeSpecialPlansBtn) {
         closeSpecialPlansBtn.addEventListener('click', () => {
             specialPlansView.classList.remove('active');
+        });
+    }
+
+    // Autophagy Plans View Navigation
+    const autophagyPlansView = document.getElementById('autophagy-plans-view');
+    const openAutophagyPlansBtn = document.getElementById('open-autophagy-plans-btn');
+    const closeAutophagyPlansBtn = document.getElementById('close-autophagy-plans-btn');
+
+    if (openAutophagyPlansBtn) {
+        openAutophagyPlansBtn.addEventListener('click', () => {
+            autophagyPlansView.classList.add('active');
+        });
+    }
+
+    if (closeAutophagyPlansBtn) {
+        closeAutophagyPlansBtn.addEventListener('click', () => {
+            autophagyPlansView.classList.remove('active');
         });
     }
 
@@ -708,4 +1134,355 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ===== Knowledge Base =====
+    const KB_ARTICLES = {
+        'intermittent': {
+            title: 'The intermittent fasting method',
+            hero: { bg: 'linear-gradient(135deg, #a8edea, #2dd4bf)', emoji: '🕐' },
+            questions: [
+                { q: 'What is the origin of intermittent fasting?', a: '<p>Fasting has been practiced for thousands of years, rooted in religious and cultural traditions across the world. Scientifically, it gained momentum in the early 2000s when researchers discovered its metabolic benefits beyond simple calorie restriction.</p>' },
+                { q: 'How does intermittent fasting work?', a: '<p>When you fast, insulin levels drop, signaling your body to burn stored fat for energy. After 12–16 hours, your body enters <strong>ketosis</strong> and begins <strong>autophagy</strong> — a cellular self-cleaning process that removes damaged components and promotes repair.</p>' },
+                { q: 'Who is intermittent fasting suitable for?', a: '<p>Most healthy adults can safely practice intermittent fasting. It is particularly beneficial for people looking to lose weight, improve metabolic health, or enhance mental clarity.</p><p><strong>Consult your doctor first</strong> if you are pregnant, diabetic, have a history of eating disorders, or take prescription medications.</p>' },
+                { q: 'What forms of intermittent fasting are there?', a: '<ul><li><strong>16:8</strong> — Fast 16h, eat within 8h window</li><li><strong>18:6 / 20:4</strong> — Shorter eating windows for deeper results</li><li><strong>OMAD</strong> — One meal a day</li><li><strong>5:2</strong> — Normal eating 5 days, ~500 kcal on 2 days</li><li><strong>36h / 48h</strong> — Extended fasts for autophagy</li></ul>' },
+                { q: 'What are the positive effects of intermittent fasting?', a: '<ul><li>Fat loss while preserving muscle mass</li><li>Improved insulin sensitivity</li><li>Reduced inflammation markers</li><li>Enhanced autophagy and cellular repair</li><li>Better mental clarity and focus</li><li>Improved cardiovascular risk factors</li></ul>' },
+                { q: 'How does intermittent fasting help me to lose weight?', a: '<p>By restricting your eating window, you naturally consume fewer calories. Additionally, fasting lowers insulin — the fat-storage hormone — and raises norepinephrine, which boosts your metabolic rate by up to <strong>14%</strong>.</p>' },
+                { q: 'Why is intermittent fasting different to other diets?', a: '<p>Most diets restrict <em>what</em> you eat. Intermittent fasting restricts <em>when</em> you eat. This makes it easier to sustain long-term because you don\'t need to count every calorie or avoid entire food groups.</p>' },
+                { q: 'Why is there no yo-yo effect with intermittent fasting?', a: '<p>Traditional diets often slow your metabolism, leading to weight regain. Intermittent fasting preserves muscle mass and keeps your metabolic rate stable, reducing the risk of the yo-yo effect significantly.</p>' },
+                { q: 'How long must I do intermittent fasting?', a: '<p>You can see benefits within the <strong>first 2–4 weeks</strong>. Most people choose to make it a permanent lifestyle rather than a temporary diet, since it's flexible and sustainable long-term.</p>' },
+                { q: 'Can intermittent fasting be combined with low Carb, Keto etc.?', a: '<p>Yes! Combining IF with a low-carb or ketogenic diet accelerates ketosis and fat burning. They are highly complementary approaches. However, start with just IF first if you\'re a beginner — don\'t change everything at once.</p>' }
+            ]
+        },
+        'first-week': {
+            title: 'Your first fasting week',
+            hero: { bg: 'linear-gradient(135deg, #ffecd2, #fcb69f)', emoji: '📅' },
+            questions: [
+                { q: 'What should I expect on day 1?', a: '<p>Day 1 is often the easiest — motivation is high. You may feel minor hunger around your usual meal times. Drink water or herbal tea to ride out the waves.</p>' },
+                { q: 'Why do I feel irritable or tired?', a: '<p>Your body is switching from glucose to fat as its primary fuel. This adaptation phase (sometimes called "keto flu") causes temporary fatigue, irritability, and brain fog. It passes within 2–4 days.</p>' },
+                { q: 'What is the best eating window for beginners?', a: '<p>The most popular beginner window is <strong>12pm–8pm</strong>. You skip breakfast, have lunch as your first meal, and finish eating by 8pm. This aligns naturally with social eating and work schedules.</p>' },
+                { q: 'What can I drink during the fast?', a: '<ul><li>✅ Water (still or sparkling)</li><li>✅ Black coffee</li><li>✅ Plain herbal or green tea</li><li>❌ Juice, milk, or any caloric drink</li></ul>' },
+                { q: 'When will it start feeling easier?', a: '<p>Most people feel a significant shift around <strong>day 3–4</strong>. Hunger becomes manageable, energy stabilizes, and the eating window starts to feel natural rather than forced.</p>' },
+                { q: 'How do I break my fast properly?', a: '<p>Break your fast with a balanced, moderate-sized meal. Avoid binge eating — your stomach will be sensitive. Good first meals: eggs, salad, avocado, fish, or a protein smoothie.</p>' }
+            ]
+        },
+        'during': {
+            title: 'During the fasting period',
+            hero: { bg: 'linear-gradient(135deg, #ffd89b, #3a7bd5)', emoji: '☕' },
+            questions: [
+                { q: 'Can I drink coffee while fasting?', a: '<p><strong>Yes</strong> — black coffee is fine and actually supports fasting. It suppresses appetite and slightly boosts fat oxidation. Avoid adding sugar, milk, or cream as these break the fast.</p>' },
+                { q: 'Does tea break a fast?', a: '<p>Plain herbal, green, or black tea contains zero calories and will not break your fast. Avoid sweetened teas or adding any milk.</p>' },
+                { q: 'How do I handle hunger pangs?', a: '<p>Hunger comes in waves and typically passes within 15–20 minutes. Strategies that help:<br>• Drink a large glass of cold water<br>• Go for a short walk<br>• Stay busy with a task<br>• Drink herbal tea</p>' },
+                { q: 'Can I exercise while fasting?', a: '<p>Yes. Light to moderate exercise — walking, yoga, cycling — is well tolerated and may enhance fat burning. Avoid heavy weightlifting on your first week fasted. Morning fasted cardio is a popular strategy.</p>' },
+                { q: 'Will fasting slow my metabolism?', a: '<p>Short-term fasting (up to 48h) actually <strong>increases</strong> metabolic rate slightly due to norepinephrine release. Only prolonged starvation (weeks of extreme restriction) slows metabolism.</p>' },
+                { q: 'Can I take medications during a fast?', a: '<p>Always follow your doctor\'s instructions. Some medications must be taken with food. <strong>Never skip essential medications</strong> to maintain a fast — your health comes first.</p>' }
+            ]
+        },
+        'nutrition': {
+            title: 'Nutrition',
+            hero: { bg: 'linear-gradient(135deg, #f093fb, #f5576c)', emoji: '🥗' },
+            questions: [
+                { q: 'What should I eat to break my fast?', a: '<p>Choose balanced, nutrient-dense meals: lean protein (chicken, fish, eggs), healthy fats (avocado, olive oil), and fiber-rich vegetables. Avoid starting with large, heavy, processed meals.</p>' },
+                { q: 'How much protein do I need?', a: '<p>Aim for <strong>0.8–1.2g of protein per kg of body weight</strong> per day. Higher protein intake helps preserve muscle mass during fasting and increases satiety during your eating window.</p>' },
+                { q: 'Should I count calories while fasting?', a: '<p>Not necessarily for everyone. Many people naturally eat less just by narrowing their eating window. However, if weight loss stalls, tracking for a few days can help identify hidden overeating.</p>' },
+                { q: 'What foods should I avoid?', a: '<ul><li>Ultra-processed foods and fast food</li><li>Refined carbohydrates (white bread, pasta, pastries)</li><li>Sugary beverages and snacks</li><li>Excessive alcohol</li></ul>' },
+                { q: 'Is breakfast important?', a: '<p>The idea that "breakfast is the most important meal" is largely a marketing myth. Research shows skipping breakfast (as in 16:8 fasting) has no negative effects for most healthy adults and may provide metabolic benefits.</p>' }
+            ]
+        },
+        'problems': {
+            title: 'Problems while fasting',
+            hero: { bg: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)', emoji: '🩺' },
+            questions: [
+                { q: 'I have a headache — what should I do?', a: '<p>Headaches are usually caused by <strong>dehydration or low electrolytes</strong>. Drink water with a small pinch of sea salt, or take an electrolyte supplement. Reduce or delay caffeine if you\'re not used to it.</p>' },
+                { q: 'I feel dizzy during my fast', a: '<p>Mild dizziness is common in early adaptation. Sit down, drink water, and take a few slow breaths. If dizziness is severe or persistent, <strong>break your fast immediately</strong> and consult a doctor.</p>' },
+                { q: 'I can\'t sleep well since I started fasting', a: '<p>Fasting can temporarily affect cortisol and sleep patterns. Try finishing your eating window at least 3 hours before bed. Magnesium glycinate in the evening can help improve sleep quality.</p>' },
+                { q: 'I feel nauseous when I break my fast', a: '<p>This happens when you eat too quickly or too heavily after a fast. Break your fast gently with a small, easily digestible meal. Wait 30 minutes before having a larger meal.</p>' },
+                { q: 'My weight loss has stalled', a: '<p>Plateaus are normal. Try: extending your fasting window, checking that you\'re not overeating in your window, adding light exercise, or drinking more water. Patience is key — the body adapts in cycles.</p>' }
+            ]
+        },
+        'health': {
+            title: 'Health',
+            hero: { bg: 'linear-gradient(135deg, #84fab0, #8fd3f4)', emoji: '💚' },
+            questions: [
+                { q: 'What is autophagy and when does it start?', a: '<p>Autophagy is your body\'s cellular self-cleaning process — it removes damaged proteins and organelles. It begins after roughly <strong>12–16 hours</strong> of fasting and peaks around 24–48 hours.</p>' },
+                { q: 'Can fasting improve my blood sugar?', a: '<p>Yes. Fasting dramatically lowers insulin and blood glucose levels. Studies show it can improve insulin sensitivity by <strong>20–31%</strong>, making it a powerful tool for managing pre-diabetes and Type 2 diabetes.</p>' },
+                { q: 'Is fasting good for the heart?', a: '<p>Research shows IF can reduce LDL cholesterol, blood pressure, triglycerides, and inflammatory markers — all key risk factors for cardiovascular disease.</p>' },
+                { q: 'Does fasting affect muscle mass?', a: '<p>Short-term fasting does <strong>not</strong> cause significant muscle loss when combined with adequate protein intake. In fact, fasting increases growth hormone, which helps preserve and even build muscle.</p>' },
+                { q: 'Is fasting safe long-term?', a: '<p>For most healthy adults, yes. Long-term IF practitioners maintain excellent metabolic health. Always get periodic blood work to monitor key markers. Consult your doctor if you have any chronic conditions.</p>' }
+            ]
+        },
+        'features': {
+            title: 'App features',
+            hero: { bg: 'linear-gradient(135deg, #f6d365, #fda085)', emoji: '⭐' },
+            questions: [
+                { q: 'How does the fasting timer work?', a: '<p>Tap <strong>Start Fasting</strong> on the main screen to begin tracking your fast in real-time. The ring fills as you approach your goal. You can end the fast at any time by tapping the button again.</p>' },
+                { q: 'How do I choose a fasting plan?', a: '<p>From the main screen, browse <strong>Standard Plans</strong>, <strong>Special Plans</strong>, or <strong>Autophagy Plans</strong>. Tap any plan to preview its chart and periods, then tap <strong>Start Week</strong> to activate it.</p>' },
+                { q: 'Can I customize my fasting times?', a: '<p>Yes! In any plan\'s detail view, tap <strong>Change Times</strong> to open the Plan Editor and adjust your fasting periods to match your personal schedule.</p>' },
+                { q: 'What is the Water Tracker?', a: '<p>Found on the main screen, the Water Tracker lets you log daily hydration. Tap <strong>+250ml</strong> or <strong>+500ml</strong> to add intake. Staying hydrated is critical during fasting.</p>' },
+                { q: 'What is a Joker Day?', a: '<p>A Joker Day is a built-in flexibility feature. If life gets in the way and you can\'t complete your fast, activating a Joker Day lets you skip without breaking your streak — everyone gets one per week.</p>' }
+            ]
+        },
+        'coach': {
+            title: 'The Coach',
+            hero: { bg: 'linear-gradient(135deg, #d4fc79, #96e6a1)', emoji: '🏆' },
+            questions: [
+                { q: 'What does the Coach do?', a: '<p>The Coach analyzes your fasting history, goals, and progress to provide <strong>personalized plan recommendations</strong>, motivational nudges, and science-based tips tailored to where you are in your fasting journey.</p>' },
+                { q: 'How does the Coach choose my plan?', a: '<p>Based on your experience level, weight goal, and schedule, the Coach selects the optimal fasting window and plan type — whether that\'s a gentle 16:8 for beginners or a deep Autophagy Week for advanced fasters.</p>' },
+                { q: 'Top tips from the Coach', a: '<ul><li>🌙 Start your fast right after dinner — sleep handles most of it</li><li>💧 Drink 500ml of water first thing in the morning</li><li>🧘 A short walk during your fast accelerates fat oxidation</li><li>✅ A 14h fast beats skipping entirely — consistency wins</li><li>📊 Review your stats weekly to stay motivated</li></ul>' }
+            ]
+        }
+    };
+
+    const openKbBtn = document.getElementById('open-knowledge-base-btn');
+    const closeKbBtn = document.getElementById('close-knowledge-base-btn');
+    const kbView = document.getElementById('knowledge-base-view');
+    const kbArticleView = document.getElementById('kb-article-view');
+    const closeKbArticleBtn = document.getElementById('close-kb-article-btn');
+    const kbArticleTitle = document.getElementById('kb-article-title');
+    const kbArticleHero = document.getElementById('kb-article-hero');
+    const kbArticleHeroEmoji = document.getElementById('kb-article-hero-emoji');
+    const kbQuestionsList = document.getElementById('kb-questions-list');
+    const kbQuestionView = document.getElementById('kb-question-view');
+    const closeKbQuestionBtn = document.getElementById('close-kb-question-btn');
+    const kbQuestionTitle = document.getElementById('kb-question-title');
+    const kbQuestionBody = document.getElementById('kb-question-body');
+
+    if (openKbBtn) openKbBtn.addEventListener('click', () => kbView.classList.add('active'));
+    if (closeKbBtn) closeKbBtn.addEventListener('click', () => kbView.classList.remove('active'));
+    if (closeKbArticleBtn) closeKbArticleBtn.addEventListener('click', () => kbArticleView.classList.remove('active'));
+    if (closeKbQuestionBtn) closeKbQuestionBtn.addEventListener('click', () => kbQuestionView.classList.remove('active'));
+
+    document.querySelectorAll('.kb-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const articleKey = btn.dataset.article;
+            const article = KB_ARTICLES[articleKey];
+            if (!article) return;
+
+            // Set hero
+            kbArticleHero.style.background = article.hero.bg;
+            kbArticleHeroEmoji.textContent = article.hero.emoji;
+            kbArticleTitle.textContent = article.title;
+
+            // Build Q&A list
+            kbQuestionsList.innerHTML = article.questions.map((item, i) => `
+                <button class="kb-item kb-q-item" data-article="${articleKey}" data-qi="${i}">
+                    <span class="kb-title">${item.q}</span>
+                    <svg class="kb-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+            `).join('');
+
+            // Wire sub-question clicks
+            kbQuestionsList.querySelectorAll('.kb-q-item').forEach(qBtn => {
+                qBtn.addEventListener('click', () => {
+                    const qi = parseInt(qBtn.dataset.qi);
+                    const q = article.questions[qi];
+                    kbQuestionTitle.textContent = q.q;
+                    kbQuestionBody.innerHTML = `<div class="kb-answer">${q.a}</div>`;
+                    kbQuestionView.classList.add('active');
+                });
+            });
+
+            kbArticleView.classList.add('active');
+        });
+    });
 });
+
+
+
+
+                <p>Intermittent fasting (IF) is an eating pattern that cycles between periods of fasting and eating. It doesn't specify which foods you should eat, but rather <strong>when you should eat them</strong>.</p>
+                <h3>Common Methods</h3>
+                <ul>
+                    <li><strong>16:8</strong> — Fast for 16 hours, eat within an 8-hour window. Most popular for beginners.</li>
+                    <li><strong>18:6</strong> — A slightly more intense version for experienced fasters.</li>
+                    <li><strong>20:4</strong> — Eat within a 4-hour window. Promotes deeper autophagy.</li>
+                    <li><strong>OMAD</strong> — One Meal A Day. Eat everything within ~1 hour.</li>
+                    <li><strong>5:2</strong> — Eat normally 5 days, restrict calories to ~500 on 2 days.</li>
+                </ul>
+                <h3>How It Works</h3>
+                <p>During fasting, your insulin levels drop significantly, which facilitates <strong>fat burning</strong>. After ~12–16 hours, your body also begins <strong>autophagy</strong> — a cellular clean-up process that removes damaged components.</p>
+                <p>Studies show intermittent fasting can help with weight loss, improved insulin sensitivity, reduced inflammation, and better brain health.</p>
+            </div>`
+        },
+        'first-week': {
+            title: 'Your First Fasting Week',
+            content: `<div class="kb-article">
+                <h3>Starting Out</h3>
+                <p>Your first week of fasting can feel challenging as your body adapts. Here's what to expect and how to make it easier.</p>
+                <h3>Days 1–2: Adjustment</h3>
+                <p>You may feel <strong>hunger, irritability, or fatigue</strong>. This is normal. Your body is used to constant fuel — it's learning to switch to fat burning.</p>
+                <ul>
+                    <li>Start with a <strong>16:8</strong> plan — it's the most beginner-friendly</li>
+                    <li>Pick your eating window around your lifestyle (e.g. 12pm–8pm)</li>
+                    <li>Drink plenty of water and black coffee or tea during the fast</li>
+                </ul>
+                <h3>Days 3–5: Getting Easier</h3>
+                <p>Hunger pangs typically <strong>diminish significantly</strong> by day 3. Your body starts producing ketones and becomes more efficient at burning fat.</p>
+                <h3>Days 6–7: Rhythm</h3>
+                <p>By the end of the first week, most people feel <strong>more energy and mental clarity</strong>. The fasting window starts to feel natural.</p>
+                <p><strong>Tip:</strong> Don't skip sleep! Most of your fasting hours can happen overnight, making the window much easier to manage.</p>
+            </div>`
+        },
+        'during': {
+            title: 'During the Fasting Period',
+            content: `<div class="kb-article">
+                <h3>What Can I Consume?</h3>
+                <p>During your fasting window, you can consume the following <strong>without breaking your fast</strong>:</p>
+                <ul>
+                    <li>✅ Water (still or sparkling)</li>
+                    <li>✅ Black coffee (no sugar, no milk)</li>
+                    <li>✅ Plain herbal or green tea</li>
+                    <li>✅ Electrolytes (sodium, potassium — check for zero calories)</li>
+                    <li>❌ Juice, soda, or sweetened drinks</li>
+                    <li>❌ Milk, cream, or any calories</li>
+                    <li>❌ Chewing gum (can trigger insulin response)</li>
+                </ul>
+                <h3>Managing Hunger</h3>
+                <p>Hunger comes in waves. If you feel intense hunger, try drinking a large glass of cold water. The sensation typically passes within <strong>15–20 minutes</strong>.</p>
+                <h3>Exercise During Fasting</h3>
+                <p>Light to moderate exercise is fine during fasting. Many people prefer <strong>fasted cardio</strong> in the morning for enhanced fat burning. Avoid intense strength training on an empty stomach if you're new to fasting.</p>
+                <h3>Medications</h3>
+                <p>Always consult your doctor regarding medications. Some must be taken with food. <strong>Never skip essential medications</strong> during a fast.</p>
+            </div>`
+        },
+        'nutrition': {
+            title: 'Nutrition',
+            content: `<div class="kb-article">
+                <h3>What to Eat During Your Eating Window</h3>
+                <p>Intermittent fasting works best when you pair it with <strong>nutrient-dense foods</strong>. The quality of your eating window matters just as much as the timing.</p>
+                <h3>Prioritize These Foods</h3>
+                <ul>
+                    <li><strong>Protein:</strong> Chicken, fish, eggs, legumes — preserve muscle mass</li>
+                    <li><strong>Healthy Fats:</strong> Avocado, olive oil, nuts — keep you full longer</li>
+                    <li><strong>Fiber:</strong> Vegetables, fruits, whole grains — support gut health</li>
+                    <li><strong>Hydrating foods:</strong> Cucumbers, leafy greens, berries</li>
+                </ul>
+                <h3>Break Your Fast Gently</h3>
+                <p>After longer fasts (24h+), break with something <strong>light and easily digestible</strong> — a small salad, broth, or a piece of fruit. Avoid immediately eating a large heavy meal.</p>
+                <h3>Avoid These</h3>
+                <ul>
+                    <li>Ultra-processed foods and sugary snacks</li>
+                    <li>Refined carbohydrates (white bread, pasta)</li>
+                    <li>Excessive alcohol — it disrupts fat burning and sleep</li>
+                </ul>
+                <p>You don't need to count calories strictly, but being mindful of <strong>food quality</strong> will multiply your fasting results.</p>
+            </div>`
+        },
+        'problems': {
+            title: 'Problems While Fasting',
+            content: `<div class="kb-article">
+                <h3>Common Issues & Solutions</h3>
+                <h3>🥱 Fatigue & Low Energy</h3>
+                <p><strong>Cause:</strong> Your body is transitioning from glucose to fat burning.<br><strong>Fix:</strong> Ensure adequate salt intake, stay hydrated, and give it 3–5 days for adaptation.</p>
+                <h3>🤕 Headaches</h3>
+                <p><strong>Cause:</strong> Often dehydration or electrolyte imbalance.<br><strong>Fix:</strong> Drink water with a pinch of sea salt or take electrolytes. Avoid caffeine if you're not used to it.</p>
+                <h3>😤 Irritability ("Hangry")</h3>
+                <p><strong>Cause:</strong> Blood sugar fluctuations during adaptation.<br><strong>Fix:</strong> This typically resolves within the first week. Stay busy and drink herbal tea.</p>
+                <h3>😴 Sleep Issues</h3>
+                <p><strong>Cause:</strong> Fasting can occasionally affect cortisol.<br><strong>Fix:</strong> Avoid eating too close to bedtime. A magnesium supplement in the evening can help.</p>
+                <h3>🤢 Nausea</h3>
+                <p><strong>Cause:</strong> Breaking a fast too quickly with heavy food, or coffee on an empty stomach.<br><strong>Fix:</strong> Break your fast gently with small, light meals. Wait 30 min after waking before drinking coffee.</p>
+                <p><strong>When to stop:</strong> If you experience severe dizziness, heart palpitations, or fainting — break your fast immediately and consult a doctor.</p>
+            </div>`
+        },
+        'health': {
+            title: 'Health Benefits of Fasting',
+            content: `<div class="kb-article">
+                <h3>Evidence-Based Benefits</h3>
+                <p>Decades of research support the health benefits of intermittent fasting. Here are the most well-documented:</p>
+                <h3>⚖️ Weight & Fat Loss</h3>
+                <p>Fasting lowers insulin and increases norepinephrine, significantly boosting your metabolic rate. Studies show IF can reduce body weight by <strong>3–8% over 3–24 weeks</strong>.</p>
+                <h3>🔁 Autophagy (Cell Repair)</h3>
+                <p>After 16–18 hours of fasting, cells begin removing and recycling damaged components. This process, called <strong>autophagy</strong>, is linked to reduced aging and disease risk.</p>
+                <h3>🧠 Brain Health</h3>
+                <p>Fasting increases BDNF (Brain-Derived Neurotrophic Factor), which supports memory, learning, and mood. Many people report <strong>improved mental clarity</strong> during fasting.</p>
+                <h3>❤️ Heart Health</h3>
+                <p>IF can reduce LDL cholesterol, blood pressure, inflammatory markers, and blood sugar — all key risk factors for heart disease.</p>
+                <h3>🩸 Insulin Sensitivity</h3>
+                <p>Fasting dramatically lowers blood sugar and insulin levels, making it a powerful tool for preventing and managing <strong>Type 2 diabetes</strong>.</p>
+                <p><em>Always consult your healthcare provider before starting any fasting protocol, especially if you have existing medical conditions.</em></p>
+            </div>`
+        },
+        'features': {
+            title: 'App Features',
+            content: `<div class="kb-article">
+                <h3>What FastWise Offers</h3>
+                <p>FastWise is designed to be your complete fasting companion. Here's a tour of the key features:</p>
+                <h3>⏱ Fasting Timer</h3>
+                <p>Track your active fast in real-time with a beautiful ring timer. See exactly how far you are toward your daily goal.</p>
+                <h3>📊 Fasting Plans Library</h3>
+                <p>Choose from a curated library of fasting plans — from beginner 16:8 to advanced Autophagy protocols. Plans include:</p>
+                <ul>
+                    <li><strong>Standard Plans</strong> — 16:8, 18:6, 20:4, OMAD</li>
+                    <li><strong>Special Plans</strong> — Multi-day and advanced protocols</li>
+                    <li><strong>Autophagy Plans</strong> — Optimized for cellular renewal</li>
+                </ul>
+                <h3>💧 Water Tracker</h3>
+                <p>Log your daily water intake with one tap. Stay hydrated throughout your fast.</p>
+                <h3>📈 Stats</h3>
+                <p>Track your progress over time with fasting history and streaks.</p>
+                <h3>📅 Plan Editor</h3>
+                <p>Customize any fasting plan to match your schedule. Add or adjust fasting periods freely.</p>
+            </div>`
+        },
+        'coach': {
+            title: 'The Coach',
+            content: `<div class="kb-article">
+                <h3>Your Fasting Coach</h3>
+                <p>The FastWise Coach feature provides <strong>personalized guidance</strong> to help you succeed with intermittent fasting and reach your health goals.</p>
+                <h3>What the Coach Does</h3>
+                <ul>
+                    <li>Recommends the best fasting plan based on your goals and experience</li>
+                    <li>Sends timely motivational reminders during tough fasting hours</li>
+                    <li>Adjusts difficulty as you progress and build endurance</li>
+                    <li>Provides science-based tips specific to your current fasting window</li>
+                </ul>
+                <h3>Getting the Most From the Coach</h3>
+                <p>Complete your profile in the <strong>Me</strong> section so the Coach can tailor recommendations to your specific goals — whether it's weight loss, autophagy, or metabolic health.</p>
+                <h3>Tips From the Coach</h3>
+                <ul>
+                    <li>🌙 Start your fast right after dinner — sleep does the heavy lifting</li>
+                    <li>💧 Drink 500ml of water first thing in the morning</li>
+                    <li>🧘 Light walking during a fast accelerates fat oxidation</li>
+                    <li>✅ Consistency beats perfection — a 14h fast is better than skipping</li>
+                </ul>
+            </div>`
+        }
+    };
+
+    const openKbBtn = document.getElementById('open-knowledge-base-btn');
+    const closeKbBtn = document.getElementById('close-knowledge-base-btn');
+    const kbView = document.getElementById('knowledge-base-view');
+    const kbArticleView = document.getElementById('kb-article-view');
+    const closeKbArticleBtn = document.getElementById('close-kb-article-btn');
+    const kbArticleTitle = document.getElementById('kb-article-title');
+    const kbArticleBody = document.getElementById('kb-article-body');
+
+    if (openKbBtn) {
+        openKbBtn.addEventListener('click', () => {
+            kbView.classList.add('active');
+        });
+    }
+    if (closeKbBtn) {
+        closeKbBtn.addEventListener('click', () => {
+            kbView.classList.remove('active');
+        });
+    }
+    if (closeKbArticleBtn) {
+        closeKbArticleBtn.addEventListener('click', () => {
+            kbArticleView.classList.remove('active');
+        });
+    }
+
+    document.querySelectorAll('.kb-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const articleKey = btn.dataset.article;
+            const article = KB_ARTICLES[articleKey];
+            if (article) {
+                kbArticleTitle.textContent = article.title;
+                kbArticleBody.innerHTML = article.content;
+                kbArticleView.classList.add('active');
+            }
+        });
+    });
+});
+
